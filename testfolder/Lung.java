@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import Unit.Antibody;
+import Unit.Virus;
+
 public class Lung {
     int[][] map;
     //humanHost
