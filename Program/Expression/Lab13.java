@@ -5,8 +5,9 @@ import java.util.Map;
 public class Lab13 {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(fortestequation("3^0"));
-        System.out.println(fortestoutput("2+3^3"));
+      
+        System.out.println(fortestequation("2^-3"));
+        System.out.println(fortestoutput("-3"));
     }
 
     public static String fortestoutput(String Input) throws SyntaxError, EvalError {

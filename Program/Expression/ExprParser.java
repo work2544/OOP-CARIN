@@ -25,6 +25,7 @@ class IntLit implements ExprPaser {
     }
 }
 
+
 class BinaryArithExpr implements ExprPaser {
     private ExprPaser left, right;
     private String op;
@@ -113,6 +114,12 @@ public class ExprParser {
         String xL = tkz.peek();
         if (isNumber(xL)) {
             String x = tkz.consume();
+            if(Integer.parseInt(x)<0)
+                try {
+                    throw new EvalError(x+" is negative");
+                } catch (EvalError e) {
+                    // TODO Auto-generated catch block
+                }
             return new IntLit(Integer.parseInt(x));
         }
         //case identity else if(){} 
