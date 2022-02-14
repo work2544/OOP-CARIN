@@ -1,3 +1,7 @@
+package Expression;
+
+import ErrorPack.SyntaxError;
+
 class ExprTokenizer implements Tokenizer {
     private String src;
     private String next;

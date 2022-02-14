@@ -1,3 +1,8 @@
+package Expression;
+
+import ErrorPack.EvalError;
+import ErrorPack.SyntaxError;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,8 +11,8 @@ public class Lab13 {
 
     public static void main(String[] args) throws Exception {
       
-        System.out.println(fortestequation("2^-3"));
-        System.out.println(fortestoutput("-3"));
+        System.out.println(fortestequation("2+3"));
+        System.out.println(fortestoutput("2+3"));
     }
 
     public static String fortestoutput(String Input) throws SyntaxError, EvalError {
@@ -17,7 +22,7 @@ public class Lab13 {
             StringBuilder expression = new StringBuilder();
             Map<String, Integer> answerarg = new HashMap<String, Integer>();
             exp.prettyPrint(expression);
-            int realanswer = exp.eval(answerarg);
+            int realanswer = exp.eval(null);
             System.out.println(expression + " = " + realanswer);
             return String.valueOf(realanswer);
         } catch (Exception e) {

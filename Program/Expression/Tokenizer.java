@@ -1,3 +1,7 @@
+package Expression;
+
+import ErrorPack.SyntaxError;
+
 public interface Tokenizer {
     /**
      * Returns the next token
