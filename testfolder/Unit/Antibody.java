@@ -1,3 +1,4 @@
+package Unit;
 public class Antibody implements Unit {
     int hp, movespeed, atk, range;
     int posx, posy;
