@@ -2,6 +2,7 @@ package Expression;
 
 import ErrorPack.EvalError;
 import ErrorPack.SyntaxError;
+import GlobalFile.ExprPaser;
 
 
 import java.util.HashMap;
@@ -11,8 +12,8 @@ public class Lab13 {
 
     public static void main(String[] args) throws Exception {
       
-        System.out.println(fortestequation("2+3"));
-        System.out.println(fortestoutput("2+3"));
+        System.out.println(fortestequation("3%0"));
+        System.out.println(fortestoutput("3%0"));
     }
 
     public static String fortestoutput(String Input) throws SyntaxError, EvalError {

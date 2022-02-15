@@ -2,6 +2,7 @@ package Expression;
 
 import ErrorPack.EvalError;
 import ErrorPack.SyntaxError;
+import GlobalFile.ExprPaser;
 
 import java.util.Map;
 
@@ -83,7 +84,6 @@ public class ExprParser {
     }
 
     private static ExprPaser parseT() throws SyntaxError {
-
         ExprPaser v = parseF();
         while (tkz.peek("*") || tkz.peek("/") || tkz.peek("%")) {
             String op = tkz.consume();
