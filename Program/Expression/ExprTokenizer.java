@@ -1,8 +1,9 @@
 package Expression;
 
 import ErrorPack.SyntaxError;
+import GlobalFile.Tokenizer;
 
-class ExprTokenizer implements Tokenizer {
+public class ExprTokenizer implements Tokenizer {
     private String src;
     private String next;
     private int pos;
@@ -12,7 +13,11 @@ class ExprTokenizer implements Tokenizer {
         pos = 0;
         computeNext();
     }
-
+    public ExprTokenizer(String src,int pos) throws SyntaxError {
+        this.src = src;
+        this.pos = pos;
+        computeNext();
+    }
     private void computeNext() throws SyntaxError {
         StringBuilder s = new StringBuilder();
         while (pos < src.length()) {

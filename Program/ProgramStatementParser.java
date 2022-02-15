@@ -2,6 +2,7 @@ import Direction.DirectionParser;
 import ErrorPack.EvalError;
 import ErrorPack.SyntaxError;
 import GlobalFile.DirectionNode;
+import GlobalFile.Identified.Identified;
 
 public class ProgramStatementParser {
 //    Expr[] exp;
@@ -10,7 +11,7 @@ public class ProgramStatementParser {
 //    }
 public static void main(String[] args) throws SyntaxError, EvalError {
 
-   testDirection();
+   testIden();
     System.out.println("fuk");
 
 }
@@ -24,5 +25,10 @@ catch (Exception e)
 {
     System.out.println("something wrong");
 }
+}
+public static void testIden() throws SyntaxError, EvalError {
+    Identified id=new Identified("<x>=1+1+1");
+
+    System.out.println(id.ParseID());
 }
 }

@@ -1,4 +1,4 @@
-package Expression;
+package GlobalFile;
 
 import ErrorPack.SyntaxError;
 

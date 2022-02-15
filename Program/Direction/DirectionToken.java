@@ -1,7 +1,7 @@
 package Direction;
 
 import ErrorPack.SyntaxError;
-import Expression.Tokenizer;
+import GlobalFile.Tokenizer;
 
 public class DirectionToken implements Tokenizer {
     private String src;

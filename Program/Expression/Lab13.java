@@ -12,8 +12,8 @@ public class Lab13 {
 
     public static void main(String[] args) throws Exception {
       
-        System.out.println(fortestequation("3%0"));
-        System.out.println(fortestoutput("3%0"));
+        System.out.println(fortestequation("(3+1"));
+        System.out.println(fortestoutput("(3+1"));
     }
 
     public static String fortestoutput(String Input) throws SyntaxError, EvalError {

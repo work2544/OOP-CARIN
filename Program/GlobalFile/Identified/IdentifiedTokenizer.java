@@ -1,18 +1,19 @@
-package Statement.CommandStatement;
+package GlobalFile.Identified;
 
 import ErrorPack.SyntaxError;
 import GlobalFile.Tokenizer;
 
-public class ComTokenizer implements Tokenizer {
+public class IdentifiedTokenizer implements Tokenizer {
     private String src;
-    private String                      next;
+    private String next;
     private int pos;
 
-    public ComTokenizer(String src) throws SyntaxError {
+    public IdentifiedTokenizer(String src) throws SyntaxError {
         this.src = src;
         pos = 0;
         computeNext();
     }
+
     private void computeNext() throws SyntaxError {
         StringBuilder s = new StringBuilder();
         while (pos < src.length()) {
@@ -24,7 +25,7 @@ public class ComTokenizer implements Tokenizer {
                 break;
             } else if (Character.isDigit(c)) {  // start of Number
                 throw new SyntaxError("Start with Number character: " + c);
-            } else if (c == '=' ) {
+            } else if (c == '=' ||c=='<'||c=='>') {
                 pos++;
                 break;
             } else if (c == ' ')  // ignore whitespace
@@ -52,7 +53,14 @@ public class ComTokenizer implements Tokenizer {
     public boolean peek(String s) {
         return next.equals(s);
     }
-
+    public String getSrc()
+    {
+        return src;
+    }
+    public int getPos()
+    {
+        return pos;
+    }
     public void consume(String s) throws SyntaxError {
         if (peek(s)) {
             consume();
@@ -60,5 +68,3 @@ public class ComTokenizer implements Tokenizer {
             throw new SyntaxError("error with " + peek());
     }
 }
-
-
