@@ -1,0 +1,49 @@
+.banner-bg {
+    height:max-content;
+    background: url("https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711") no-repeat;
+    background-size:cover;
+    overflow: hidden;
+    
+}.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.banner-con {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height:768px;
+    
+}
+.banner-text {
+    color: #fff;
+    padding-top: 0;
+    text-align:center;
+    
+}
+.banner-btn {
+    background: #fff;
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #333;
+    border: 5px solid transparent;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    cursor:pointer;
+
+}
+.banner-btn:hover {
+    border: 3px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .banner-text {
+        padding: 0 2rem;
+    }
+}
