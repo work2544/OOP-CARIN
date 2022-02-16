@@ -1,6 +1,6 @@
-package ProgramAST.GlobalFile;
+package ProgramAST.Statement.GlobalFile;
 
-import ProgramAST.ErrorPack.SyntaxError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
 
 public interface Tokenizer {
     /**

@@ -1,16 +1,29 @@
-package ProgramAST.Statement.CommandStatement;
+package ProgramAST.Statement;
 
-import ProgramAST.ErrorPack.EvalError;
-import ProgramAST.ErrorPack.SyntaxError;
-import ProgramAST.Expression.BinaryArithExpr;
-import ProgramAST.GlobalFile.DirectionNode;
-import ProgramAST.GlobalFile.ExprPaser;
-import ProgramAST.GlobalFile.NodeTree;
-import ProgramAST.GlobalFile.Variable;
+import ProgramAST.Statement.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
+import ProgramAST.Statement.Expression.BinaryArithExpr;
+import ProgramAST.Statement.GlobalFile.NodeTree;
+import ProgramAST.Statement.GlobalFile.Variable;
 import Unit.Unit;
 
 
+public class Command implements NodeTree {
+    NodeTree cmd;
+    public Command(String actcom, String directionNode,Unit unit)
+    {
+        cmd=new ActionCommand(actcom,directionNode,unit);
+    }
+    public Command(Variable name, BinaryArithExpr exp)
+    {
+        cmd=new AssignCommand(name,exp);
+    }
 
+    @Override
+    public int eval() throws EvalError, SyntaxError {
+        return cmd.eval();
+    }
+}
 class ActionCommand implements NodeTree{
     String actcom; //move or acttack
     String directionNode;

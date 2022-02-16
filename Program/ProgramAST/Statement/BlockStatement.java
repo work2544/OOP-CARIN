@@ -1,15 +1,13 @@
-package ProgramAST.Statement.BlockStatement;
+package ProgramAST.Statement;
 
-import ProgramAST.ErrorPack.EvalError;
-import ProgramAST.ErrorPack.SyntaxError;
-import ProgramAST.GlobalFile.NodeTree;
+import ProgramAST.Statement.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
+import ProgramAST.Statement.GlobalFile.NodeTree;
 
 
 public class BlockStatement implements NodeTree {
-    NodeTree expr;
     NodeTree statement;
-    public BlockStatement(NodeTree expr,NodeTree statement){
-        this.expr=expr;
+    public BlockStatement(NodeTree statement){
         this.statement=statement;
     }
 

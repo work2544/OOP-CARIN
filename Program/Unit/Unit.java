@@ -1,5 +1,6 @@
 package Unit;
-interface Unit{
+
+public interface Unit{
    
     int hp();
     int movespeed();
@@ -7,7 +8,8 @@ interface Unit{
     int atk();
     int posx();
     int posy();
-    void attact();
-    void move();
-    
+    int nearby();
+    void move(String Direction);
+
+    void attack(String Direction);
 }

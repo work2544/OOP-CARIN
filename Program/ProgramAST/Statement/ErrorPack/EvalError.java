@@ -1,4 +1,4 @@
-package ProgramAST.ErrorPack;
+package ProgramAST.Statement.ErrorPack;
 
 public class EvalError extends Exception {
     public EvalError(String message) {

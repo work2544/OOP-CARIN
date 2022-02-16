@@ -1,4 +1,4 @@
-package ProgramAST.ErrorPack;
+package ProgramAST.Statement.ErrorPack;
 
 public class SyntaxError extends Exception {
    public SyntaxError(String message) {

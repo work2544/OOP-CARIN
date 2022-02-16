@@ -1,8 +1,8 @@
-package ProgramAST.Expression;
+package ProgramAST.Statement.Expression;
 
-import ProgramAST.ErrorPack.EvalError;
-import ProgramAST.ErrorPack.SyntaxError;
-import ProgramAST.GlobalFile.NodeTree;
+import ProgramAST.Statement.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
+import ProgramAST.Statement.GlobalFile.NodeTree;
 
 public class BinaryArithExpr implements NodeTree {
     private NodeTree left, right;

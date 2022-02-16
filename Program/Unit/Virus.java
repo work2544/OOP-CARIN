@@ -1,4 +1,6 @@
 package Unit;
+
+
 public class Virus implements Unit {
     int hp, movespeed, atk, range;
     int posx, posy;
@@ -11,12 +13,12 @@ public class Virus implements Unit {
     }
 
     @Override
-    public void attact() {
+    public void attack(String Direction) {
 
     }
 
     @Override
-    public void move() {
+    public void move(String Direction) {
 
     }
 
@@ -50,6 +52,11 @@ public class Virus implements Unit {
     public int posy() {
 
         return posy;
+    }
+
+    @Override
+    public int nearby() {
+        return 0;
     }
 
     public Virus CreatVirus(String type) {

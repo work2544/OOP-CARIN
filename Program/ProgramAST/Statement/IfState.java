@@ -1,8 +1,8 @@
-package Statement;
+package ProgramAST.Statement;
 
-import ErrorPack.EvalError;
-import ErrorPack.SyntaxError;
-import GlobalFile.NodeTree;
+import ProgramAST.Statement.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
+import ProgramAST.Statement.GlobalFile.NodeTree;
 public class IfState implements NodeTree {
    NodeTree ifexp;
    NodeTree thenstate;

@@ -1,13 +1,13 @@
-package ProgramAST.GlobalFile;
+package ProgramAST.Statement.GlobalFile;
 
-import ProgramAST.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.EvalError;
 import java.util.Map;
 
 
 public class Variable implements NodeTree {
     static String identifier;
     static Map<String,Integer> var;
-
+    public Variable(){}
     public Variable(String Identifier,Map<String,Integer> var) {
         this.identifier=Identifier;
         this.var=var;

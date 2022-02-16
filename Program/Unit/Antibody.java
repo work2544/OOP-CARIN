@@ -1,4 +1,5 @@
 package Unit;
+
 public class Antibody implements Unit {
     int hp, movespeed, atk, range;
     int posx, posy;
@@ -13,12 +14,12 @@ public class Antibody implements Unit {
     }
 
     @Override
-    public void attact() {
+    public void attack(String Direction) {
 
     }
 
     @Override
-    public void move() {
+    public void move(String Direction) {
 
     }
 
@@ -53,11 +54,16 @@ public class Antibody implements Unit {
 
         return posy;
     }
+
+    @Override
+    public int nearby() {
+        return 0;
+    }
+
     public String toString() {
         return "atk: " + atk + ","+"hp: " + hp +"range: " + range+", posx: " + posx + ", posy: " + posy;
     }
     
-        
     public static Antibody CreatAntibody(String type,int posx,int posy) {
         Antibody antibody = null;
         if (type.equals("melee")) {
