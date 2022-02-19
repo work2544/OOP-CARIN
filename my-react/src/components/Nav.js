@@ -12,16 +12,21 @@ function Nav() {
     const handleClick = () => setClick(!click);
     console.log(click);
     const closeMobileMenu = () => setClick(false);
+    const hoverHandler = () => {
+        console.log("onMouseEnter")
+    }
+    const outHandler = () => {
+        console.log("onMouseLeave")
+    }
 
     return (
         <div className="navbar">
             <div className="container">
                 <div className="nav-con">
-                    <div className="logo-container" onClick={handleClick}>
-                        <a href="/">Carin <GiAbstract099 /></a>
+                    <div className="logo-container "  >
+                        <a ><Link to="banner" ></Link>{/* <GiAbstract099 /> */}</a>
                     </div>
-                    <ul className={click ? "menu active" : "menu"}>
-                    
+                    <ul className={click ? "active" : "menu"}>
                         <li className="menu-link" onClick={closeMobileMenu}>
                             <a><Link  to="about" spy={true} smooth={true}>ABOUT</Link></a>
                         </li>

@@ -2,13 +2,13 @@ import React from 'react'
 import "./About.css"
 
 let aboutData = {
-    title: "ABOUT",
-    desc : "Mai wai raw"
+    title: "Credit",
+    desc : "Eren Yerger"
 }
 
-export default function About() {
+export default function Credit() {
   return (
-    <div id='about' >
+    <div id='credit' >
     <div className='about'>
         <div className='about-bg'>
             <div className='container'>

@@ -1,0 +1,34 @@
+.carin{
+    display: flex;
+ height: 100%;
+}
+
+.carin-screen{
+    background: url("../assets/background/background.png");
+    background-size: 100%;
+    width: 1040px;
+    height:720px;
+    background-position: center;
+    image-rendering: pixelated;
+    
+    
+}
+
+.contain{
+    width: 480px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.head{
+
+}
+
+.carin-contain{
+
+}
+
+.status-contain{
+    background-color: cornflowerblue;
+    
+}

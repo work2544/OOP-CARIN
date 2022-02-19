@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import {Link} from 'react-scroll'
+import './Home.css'
 
-export default class Home extends Component {
-    render() {
-        return (
-           <div></div>
-        )
-    }
-}
+export default function Home() {
+    return (
+      <div className='home' ></div>
+      
+    )
+  }

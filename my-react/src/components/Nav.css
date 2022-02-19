@@ -6,7 +6,7 @@
 .navbar {
     background: #333;
     height: 80px;
-    position: fixed;
+    position:sticky;
     top: 0;
     width: 100%;
     
@@ -19,18 +19,31 @@
     align-items: center;
 }
 
+
+
 .logo-container a {
-    color: #fff;
+    /* color: #fff;
     text-decoration:none;
     font-weight: bold;
     font-size: 2rem;
-    padding-left:20px;
+    
+    font-family: 'Common Pixel', sans-serif; */
+    display: flex;
+    cursor:pointer;
+    background: url("../assets/btn/logo-carin.png");
+    background-size:100%;
+    
+    width: 150px;
+    height:100px;
+    background-position: center;
+    image-rendering: pixelated;
+    
     
 }
 
 .menu {
     display: flex;
-    list-style: none;
+    list-style: none;   
 }
 
 .menu li {
@@ -38,10 +51,18 @@
 }
 
 .menu li a {
-    text-decoration: none;
+    text-decoration:none;
     color: #fff;
     cursor:pointer;
+    font-family: 'Common Pixel', sans-serif;
 }
+
+.menu li a:hover {
+    
+    color: rgb(148, 148, 148);
+    font-size: 1.2rem;
+}
+
 
 .mobile-menu {
     display: none;
@@ -52,6 +73,7 @@
         display: block;
         color :#fff;
         font-size: 2rem;
+        font-family: 'Common Pixel', sans-serif;
     }
 
     .navbar {
@@ -79,6 +101,7 @@
         align-content: center;
         transition: 0.5s ease;
     }
+    
 
     .menu li {
         padding-right: 0 ;
@@ -91,6 +114,8 @@
         height: 10vw;
         padding: 10px 0;
     }
+
+
 
     #about,#game,#credit{
         height: 600px;
