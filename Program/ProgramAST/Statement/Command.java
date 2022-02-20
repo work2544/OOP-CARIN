@@ -14,7 +14,7 @@ public class Command implements NodeTree {
     {
         cmd=new ActionCommand(actcom,directionNode,unit);
     }
-    public Command(Variable name, BinaryArithExpr exp)
+    public Command(Variable name, int exp)
     {
         cmd=new AssignCommand(name,exp);
     }
@@ -51,16 +51,16 @@ class ActionCommand implements NodeTree{
 }
 class AssignCommand implements NodeTree{
     Variable name;
-    BinaryArithExpr exp;
+    int exp;
 
-    public AssignCommand(Variable name, BinaryArithExpr exp) {
-        this.exp=exp;
+    public AssignCommand(Variable name, int exp) {
         this.name=name;
+        this.exp=exp;
     }
     @Override
     public int eval() throws EvalError, SyntaxError {
-        Variable.assign(exp.eval());
-        return 0;
+        Variable.assign(exp);
+        return exp;
     }
 }
 

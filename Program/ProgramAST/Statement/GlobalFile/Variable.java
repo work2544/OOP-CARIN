@@ -1,12 +1,16 @@
 package ProgramAST.Statement.GlobalFile;
 
 import ProgramAST.Statement.ErrorPack.EvalError;
+
+import java.util.HashMap;
 import java.util.Map;
 
 
 public class Variable implements NodeTree {
+    public static Map<String,Integer> allvar=new HashMap<>();
     static String identifier;
     static Map<String,Integer> var;
+
     public Variable(){}
     public Variable(String Identifier,Map<String,Integer> var) {
         this.identifier=Identifier;

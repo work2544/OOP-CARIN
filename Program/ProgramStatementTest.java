@@ -5,9 +5,14 @@ import ProgramAST.ProgramTokenizer;
 import ProgramAST.Statement.ErrorPack.SyntaxError;
 
 public class ProgramStatementTest {
-
+    public class MyText{
+        static String[] banned_word={"antibody", "down", "downleft", "downright", "else", "if",
+                "left", "move", "nearby", "right", "shoot", "then", "up", "upleft", "upright", "virus", "while"};
+        static String[] direction={"left" ," right" ," up ", "down "," upleft "," upright "," downleft "," downright"};
+    }
 public static void main(String[] args) throws SyntaxError {
-    Parser Programparser=new Parser("Program/test_genetic");
+
+    //Parser Programparser=new Parser("Program/test_genetic");
 }
 //public NodeTree void ParseProgram()
 //    {
