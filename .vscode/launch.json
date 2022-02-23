@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CarinApiApplication<carin-api>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.api.carinapi.CarinApiApplication",
+            "projectName": "carin-api",
+            "args": ""
+        }
+    ]
+}
