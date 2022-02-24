@@ -12,7 +12,8 @@
 
 .carin{
     
-    /* justify-content: center; */
+    justify-content: center;
+    display:flex;
     align-items: center;
     
 }
@@ -24,6 +25,7 @@
 }
 
 .game-texthead{
+    display: flex;
     color: #fff;
     text-align: center;
     padding-top: 0px;

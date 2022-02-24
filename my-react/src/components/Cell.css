@@ -1,0 +1,26 @@
+.Cell{
+    display:inline-block;
+    width: 64px;
+    height: 64px;
+    background: url('../assets/cell/tileGreenFull.png');
+    padding: 10px;
+    border-style: solid;
+    border-width:thin;
+    border-color: black;
+    transition: background-color 0.5s ease;
+}
+.Cell-Lit{
+    background-color: #00bcd4;
+}
+
+.Cell .full{
+    background-color: rgb(223, 60, 60);
+}
+
+.Cell:hover{
+    background: url('../assets/cell/tileGreenFrame.png');
+}
+
+.Cell:active{
+    background: url('../assets/cell/tileBlueFrame.png');
+}

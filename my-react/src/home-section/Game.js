@@ -18,11 +18,11 @@ export default function Game()  {
         <div className='container'>
           <div className='game-con'>
           <div className='game-texthead'>
-            <h1>Carin</h1>
-              <div className='carin' >
+            <h1></h1>
+          </div>
+          <div className='carin' >
                 <Carin/>
               </div>
-          </div>
           </div>
           </div>
         </div>

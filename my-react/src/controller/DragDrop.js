@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Picture from "./Picture";
 import { useDrop } from "react-dnd";
 import "./DragDrop.css";
+import Board from "../components/Board/Board";
 
 const PictureList = [
   {
     id: 1,
     url:
-      "https://yt3.ggpht.com/ytc/AAUvwnjOQiXUsXYMs8lwrd4litEEqXry1-atqJavJJ09=s900-c-k-c0x00ffffff-no-rj",
+      "image/btn/RebannerAntiKnight.png",
   },
   {
     id: 2,
@@ -43,11 +44,11 @@ function DragDrop() {
           return <Picture url={picture.url} id={picture.id} />;
         })}
       </div>
-      <div className="Board" ref={drop}>
+      <Board className="Board" ref={drop}>
         {board.map((picture) => {
           return <Picture url={picture.url} id={picture.id} />;
         })}
-      </div>
+      </Board>
     </>
   );
 }

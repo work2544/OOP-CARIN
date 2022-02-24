@@ -5,7 +5,7 @@ import '../home-section/Carin.css'
 
 import AntiItem from './Itembar/AntiItem'
 import Board from './Board/Board';
-import Cell from './Board/Cell'
+import Cell from './Cell'
 import Picture from '../controller/Picture';
 
 const ItemList = [
@@ -46,22 +46,17 @@ function AnitiBar() {
 
   return (
     <>
-    <div className='board'>
-      {/* <Board ref={drop}>
+      {/* <div className='Board'ref={drop}>
         {board.map((picture) => {
           return <AntiItem url={picture.url} id={picture.id} />;
         })}
-      </Board> */}
-      <div id='AntiBar'>
+     </div> */}
+      
       <div className="Pictures">
         {ItemList.map((picture) => {
           return <AntiItem url={picture.url} id={picture.id} />;
         })}
       </div>
-    </div>
-    </div>
-    
-    
     </>
   )
 }

@@ -1,0 +1,28 @@
+.menu{
+    font-family: 'Common Pixel', sans-serif;
+    
+    
+}
+
+.btn-menu:hover{
+    border: 5px;
+}
+
+.menu .head-menu{
+    font-size: 48px;
+    color: rgb(0, 0, 0);
+    display:grid;
+    justify-content: center;
+}
+
+.bottuns {
+    
+    margin-top: 0%;
+    display: grid;
+    justify-content: space-around;
+}
+
+.bottuns button{
+    margin-top: 50%;
+}
+

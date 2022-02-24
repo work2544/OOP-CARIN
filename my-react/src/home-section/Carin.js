@@ -7,6 +7,7 @@ import * as bg_1 from "../assets/background/background.png";
 import Board from '../components/Board/Board';
 import AntiBar from '../components/AntiBar';
 import AntiItem from '../components/Itembar/AntiItem';
+import Menu from '../components/Menu/Menu';
 
 export default class Carin extends Component {
 
@@ -20,13 +21,16 @@ export default class Carin extends Component {
             <div className='grid'>
               <Board/>
             </div>
-            
+            <div className='anti-bar'>
+              <DndProvider backend={HTML5Backend}>
+                <AntiBar/>
+              </DndProvider>
+            </div>
+            <div className='menu'>
+            <Menu/>
+            </div>
           </div>
-          <div className='anti-bar'>
-            <DndProvider backend={HTML5Backend}>
-              <AntiBar/>
-		    	  </DndProvider>
-            </div> 
+           
       </div>
     )
   }
