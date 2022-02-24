@@ -10,7 +10,7 @@ let aboutData = {
     desc : "place my game"
 }
 
-export default function Game() {
+export default function Game()  {
   return (
     <div id='game'>
       <div className='game'>
@@ -20,7 +20,7 @@ export default function Game() {
           <div className='game-texthead'>
             <h1>Carin</h1>
               <div className='carin' >
-              <Carin/>
+                <Carin/>
               </div>
           </div>
           </div>

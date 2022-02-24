@@ -1,16 +1,45 @@
 .carin{
     display: flex;
- height: 100%;
+    background-color: rgb(0, 0, 0);
+    height: 640px;
+    width: 1024px;
+
 }
 
+.canvas{
+  display: block;
+  background-color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
 .carin-screen{
-    background: url("../assets/background/background.png");
-    background-size: 100%;
-    width: 1040px;
-    height:720px;
-    background-position: center;
-    image-rendering: pixelated;
+    position: relative;
+    background: url(../assets/background/background.png);
+    width: 1024px;
+    height:640px;   
     
+}
+
+.cell{
+    background: url(../assets/background/cell.png);
+    background-size: cover;
+    height: 550px;
+    top: 35px;
+}
+
+.grid{
+    position:absolute;
+    padding-top: 10%;
+    
+}
+
+.anti-bar{
+    position:absolute ;
+    top: 2080px;
     
 }
 

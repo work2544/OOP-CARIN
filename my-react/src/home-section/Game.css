@@ -6,19 +6,13 @@
 
 .game{
     background-color: rgb(71, 70, 70);
-    /* height: 720px; */
-    
-}
-
-.game-bg{
-    
-    
+    height: 750px;
     
 }
 
 .carin{
-    display: flex;
-    justify-content: center;
+    
+    /* justify-content: center; */
     align-items: center;
     
 }
@@ -32,8 +26,7 @@
 .game-texthead{
     color: #fff;
     text-align: center;
-    justify-content: center;
-    padding-top: 0%;
+    padding-top: 0px;
     font-family: 'Common Pixel', sans-serif;
     
 

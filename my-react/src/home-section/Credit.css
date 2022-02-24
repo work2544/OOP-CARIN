@@ -2,38 +2,38 @@
     max-width:100%;
     margin: 0 auto;
     
-}
-
-.credit{
+  }
+  
+  .about{
     background-color: rgb(71, 70, 70);
     height:720px;
     
-}
-
-.credit-bg{
+  }
+  
+  .about-bg{
     height: fit-content;
     
-}
-
-.credit-con{
+  }
+  
+  .about-con{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.credit-text{
+  }
+  
+  .about-text{
     color: #fff;   
     text-align: center;
-    padding-top: 120px;
+    padding-top: 0px;
     height: 20px;
     font-family: 'Common Pixel', sans-serif;
-}
-
-#down {
+  }
+  
+  #down {
     margin-top: 100%; 
     padding-bottom: 25%;
    }
-
-html {
+  
+  html {
     scroll-behavior: smooth;
-}
+  }

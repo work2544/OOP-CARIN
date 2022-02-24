@@ -25,8 +25,8 @@ function Banner() {
                     <p>
                         {bannerData.desc}
                     </p> */}
-                    <Link to='game' spy={true} smooth={true}>
-                    <a path="game" className="banner-btn">Play</a></Link>
+                    <Link to='/game' spy={true} smooth={true}>
+                    <a className="banner-btn">Play</a></Link>
                     </div>
                 </div>
             </div>

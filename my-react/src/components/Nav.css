@@ -6,7 +6,7 @@
 .navbar {
     background: #333;
     height: 80px;
-    position:sticky;
+    /* position:sticky; */
     top: 0;
     width: 100%;
     
@@ -30,7 +30,7 @@
     font-family: 'Common Pixel', sans-serif; */
     display: flex;
     cursor:pointer;
-    background: url("../assets/btn/logo-carin.png");
+    background: url("../assets/logo-carin.png");
     background-size:100%;
     
     width: 150px;
@@ -59,8 +59,9 @@
 
 .menu li a:hover {
     
-    color: rgb(148, 148, 148);
+    color: hsla(0, 0, lightness, .4);
     font-size: 1.2rem;
+    font-weight: bolder;
 }
 
 

@@ -1,0 +1,28 @@
+#AntiBar{
+    display: block;
+    /* width: 506px;
+    height: 130px; */
+    
+}
+
+#AntiItem:hover{
+    cursor: pointer;
+}
+
+.Pictures {
+    margin: 10px;
+}
+
+img {
+    margin: 5px;
+  }
+
+img:hover{
+  cursor: pointer;
+}
+
+
+
+.board {
+  
+}

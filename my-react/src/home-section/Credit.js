@@ -2,7 +2,7 @@ import React from 'react'
 import "./About.css"
 
 let aboutData = {
-    title: "Credit",
+    title: "About us",
     desc : "Eren Yerger"
 }
 

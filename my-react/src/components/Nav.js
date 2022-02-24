@@ -35,7 +35,7 @@ function Nav() {
                             <a><Link  to="game" spy={true} smooth={true}>GAME</Link></a>
                         </li>
                         <li className="menu-link" onClick={closeMobileMenu}>
-                            <a><Link  to="credit" spy={true} smooth={true}>CREDIT</Link></a>
+                            <a><Link  to="credit" spy={true} smooth={true}>ABOUT US</Link></a>
                         </li>
                     </ul>
                     <div className="mobile-menu" onClick={handleClick}>
