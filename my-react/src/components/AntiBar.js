@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
-import { useDrop } from "react-dnd";
+import { useDrop,useDrag } from "react-dnd";
 import './AntiBar.css'
-import '../home-section/Carin.css'
+import '../stage/Carin.css'
 
 import AntiItem from './Itembar/AntiItem'
-import Board from './Board/Board';
+import Board from './Board';
 import Cell from './Cell'
 import Picture from '../controller/Picture';
 
+
 const ItemList = [
   {
-    id: 1,
+    id: 'Knight',
     url:
       "image/btn/RebannerAntiKnight.png",
   },
   {
-    id: 2,
+    id: 'Mage',
     url:
       'image/btn/RebannerAntiMage.png',
   },
   {
-    id: 3,
+    id: 'Shield',
     url:
       'image/btn/RebannerAntiShield.png',
   },
@@ -31,26 +32,27 @@ function AnitiBar() {
     
     const [board, setBoard] = useState([]);
 
-    const [{ isOver }, drop] = useDrop(() => ({
-      accept: "image",
-      drop: (item) => addImageToBoard(item.id),
-      collect: (monitor) => ({
-        isOver: !!monitor.isOver(),
-      }),
-    }));
+    
+
+    /* const [collected, drag, dragPreview] = useDrag(() => ({
+    type : "item",
+    item: { id }
+  })) */
   
     const addImageToBoard = (id) => {
-      const ItemList = ItemList.filter((picture) => id === picture.id);
-      setBoard((board) => [...board, ItemList[0]]);
+      const itemList = ItemList.filter((picture) => id === picture.id);
+      setBoard((board) => [...board, itemList[0]]);
     };
+
+
 
   return (
     <>
-      {/* <div className='Board'ref={drop}>
+      {/* {<div className='Board'ref={drop}>
         {board.map((picture) => {
           return <AntiItem url={picture.url} id={picture.id} />;
         })}
-     </div> */}
+     </div>} */}
       
       <div className="Pictures">
         {ItemList.map((picture) => {

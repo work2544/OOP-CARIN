@@ -1,0 +1,43 @@
+.imune{
+    width: 1040px;
+    height: 720px;
+   /*  background-color: black; */
+}
+
+.imune-bg{
+    position: absolute;
+    /* background: url(../assets/background/background.png); */
+    background-color: rgb(56, 56, 56);
+    width: 1024px;
+    height:720px; 
+}
+.head-text{
+    margin-top: 5%;
+    color: #fff;
+    text-align:center;
+    font-family: 'Common Pixel', sans-serif;
+}
+
+.organ-select{
+    top: 20%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoomIn-carin{
+    
+    
+    display:grid;
+    
+    justify-content: center;
+    
+    
+    
+}
+
+.carin-pop{
+    position: absolute;
+}

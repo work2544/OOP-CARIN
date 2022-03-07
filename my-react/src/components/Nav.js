@@ -22,6 +22,7 @@ function Nav() {
     }
 
     return (
+    <div id='nav'>
       <div className="navbar">
       <div className="container">
           <div className="nav-con">
@@ -30,13 +31,13 @@ function Nav() {
               </div>
               <ul className={click ? "active" : "menu"}>
                   <li className="menu-link" onClick={closeMobileMenu}>
-                      <a><Link  to="/Home" spy={true} smooth={true}>HOME</Link></a>
+                      <a><Link  to="/home" spy={true} smooth={true}>HOME</Link></a>
                   </li>
                   <li className="menu-link" onClick={closeMobileMenu}>
-                      <a><Link  to="/Game" spy={true} smooth={true}>GAME</Link></a>
+                      <a><Link  to="/game" spy={true} smooth={true}>GAME</Link></a>
                   </li>
                   <li className="menu-link" onClick={closeMobileMenu}>
-                      <a><Link  to="/AboutUs" spy={true} smooth={true}>ABOUT US</Link></a>
+                      <a><Link  to="/aboutus" spy={true} smooth={true}>ABOUT US</Link></a>
                   </li>
               </ul>
               <div className="mobile-menu" onClick={handleClick}>
@@ -48,6 +49,7 @@ function Nav() {
               </div>
           </div>
       </div>
+  </div>
   </div>
 )
 }

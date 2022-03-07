@@ -1,0 +1,46 @@
+.health-bar{
+    /* display: flex;
+    flex-direction: row; */
+    width: 100%;
+    
+}
+
+.outner-bar{
+    display:run-in;
+    background-color: rgb(255, 255, 255);
+    width: 250px;
+    height: 35px;
+    border-radius: 50px;
+    border: 2px solid #666;
+    margin-bottom: 40px;
+}
+
+.inner-bar{
+    background: limegreen;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .3s ease-in;
+}
+
+.healthLeft{
+    text-align: center;
+    vertical-align: top;
+    font-family: 'Common Pixel', sans-serif;
+}
+
+.health-con{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.organ-icon{
+    position: absolute;
+    
+}
+
+.barr{
+    position:static;
+    margin-top: 6%;
+    margin-left:20%;
+}

@@ -1,0 +1,99 @@
+.carin{
+    background-color: rgb(71, 70, 70);
+    height: 730px;
+    justify-content: center;
+    display:flex;
+    
+    
+}
+
+.carin-contain{
+    
+
+}
+
+.canvas{
+  display: block;
+  background-color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.carin-screen{
+    position:relative;
+    background: url(../assets/background/background.png);
+    width: 1024px;
+    height:720px;  
+    
+    
+}
+
+.cell{
+    background: url(../assets/background/cell.png);
+    background-size: cover;
+    height: 550px;
+    top: 35px;
+}
+
+.zooomOut-btn{
+    position: absolute;
+}
+
+.grid{
+    position:absolute;
+    margin-top: 10%;
+    
+}
+
+.anti-bar{
+    position:absolute ;
+    margin-top: 53%;
+    
+}
+
+.head{
+
+    flex-direction: row;
+    list-style: none;
+}
+
+.healthbar{
+    padding-left: 2%;
+    padding-top: 2%;
+    position: absolute;
+    
+    
+}
+
+.head-btn{
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+    list-style: none;
+    left:70%;
+}
+
+.head .mu{
+    background-color: transparent;
+    border :none;
+}
+
+.contain{
+    width: 480px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.carin-con{
+    display: flex;
+    justify-content: space-between;
+    /* height: 80px; */
+    align-items: center;
+}
+
+.status-contain{
+    background-color: cornflowerblue;
+    
+}
+

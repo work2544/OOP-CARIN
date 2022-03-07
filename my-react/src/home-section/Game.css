@@ -2,15 +2,16 @@
     max-width:100%;
     margin: 0 auto;
     
+    
 }
 
 .game{
     background-color: rgb(71, 70, 70);
-    height: 750px;
+    height: 721px;
     
 }
 
-.carin{
+.game-carin{
     
     justify-content: center;
     display:flex;
@@ -22,13 +23,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .game-texthead{
+    
     display: flex;
     color: #fff;
     text-align: center;
-    padding-top: 0px;
+    /* padding-top: 2%; */
     font-family: 'Common Pixel', sans-serif;
     
 

@@ -18,9 +18,9 @@
 }
 
 .Cell:hover{
-    background: url('../assets/cell/tileGreenFrame.png');
+    background: url('../assets/cell/tileBlueFrame.png');
 }
 
 .Cell:active{
-    background: url('../assets/cell/tileBlueFrame.png');
+    background: url('../assets/cell/tileBlueFull.png');
 }

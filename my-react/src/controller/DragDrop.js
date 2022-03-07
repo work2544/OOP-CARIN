@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Picture from "./Picture";
 import { useDrop } from "react-dnd";
 import "./DragDrop.css";
-import Board from "../components/Board/Board";
+import Board from "../components/Board";
 
 const PictureList = [
   {

@@ -43,8 +43,9 @@
 }
 
 .menu {
-    margin-left: 75%;
-    display: flex;
+    left: 75%;
+    display:flex;
+    flex-direction: row;
     list-style: none;   
 }
 

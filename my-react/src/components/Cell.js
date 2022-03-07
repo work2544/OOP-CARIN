@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
+import { useDrop } from 'react-dnd'
 import './Cell.css'
 
 import * as tileBlueFrame from '../assets/cell/tileBlueFrame.png';
 
 
-export class Cell extends Component {
+
+
+function Cell ({x,y}) {
 
     
-  render() {
-    return (
-      <div className='Cell'></div>
+    
+    
+  return (
+      <div className='Cell' >
+        
+      </div>
 
     )
+
   }
-}
+
 
 export default Cell

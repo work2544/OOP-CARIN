@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import Popup from './Popup'
 
+import Popup from './Popup'
 import './Menu.css'
 import { useState } from 'react'
+import { Link} from 'react-router-dom'
 
 export default function Menu() {
-  const [buttonPopup, setButtonPopup] = useState(false);
+  const [buttonPopup, setButtonPopup ,] = useState(false);
   const [timedPopup, setTimePopup] = useState(false);
 
   /* useEffect(() => {
@@ -15,16 +16,22 @@ export default function Menu() {
   }, []); */
 
   return (
-    <div className='menu'>
+    <div className='menus'>
       <main>
-        <button onClick={() => setButtonPopup(true)} >Menu</button>
+        <div className='menu-btn'>
+        <img  className='btn-menus' src={('/image/btn-menu/barsHorizontal.png')} 
+        onClick={() => setButtonPopup(true)} ></img>
+        </div>
       </main>
       <Popup triger={buttonPopup} setTrigger={setButtonPopup}>
         <div className='head-menu'>Menu</div>
         <div className='bottuns'>
-          <button >Home</button>
-          <button >Restart</button>
-          <button >Top Up</button>
+          <Link  to="/home" spy={true} smooth={true}><button className='btn-restart'>
+            <img src={('/image/btn-menu/home.png')}></img></button></Link>
+          <Link  to="/game" spy={true} smooth={true}><button className='btn-restart'>
+            <img src={('/image/btn-menu/return.png')}></img></button></Link>
+          <Link  to="/home" spy={true} smooth={true}><button className='btn-restart'>
+            <img src={('/image/btn-menu/door.png')}></img></button></Link>
         </div>
       </Popup>
 

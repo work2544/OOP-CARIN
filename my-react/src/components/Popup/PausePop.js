@@ -1,7 +1,7 @@
 import React from 'react'
 import './Popup.css'
 
-function Popup(props) {
+function PausePop(props) {
   
   return (props.triger) ? (
     <div className='popup'>
@@ -14,4 +14,4 @@ function Popup(props) {
   ) : "";
 }
 
-export default Popup
+export default PausePop

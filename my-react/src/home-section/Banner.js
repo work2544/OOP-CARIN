@@ -1,7 +1,7 @@
 import React ,{ useState } from 'react'
 import {Link} from 'react-scroll'
 import "./Banner.css"
-
+import Nav from '../components/Nav';
 import About from "./About";
 let bannerData = {
     title: "CARIN",
@@ -16,7 +16,9 @@ function Banner() {
     const closeMobileMenu = () => setClick(false);
 
     return (
-        <><div id='banner'>
+        <>
+        <Nav/>
+        <div className='banner'>
             <div className="banner-bg">
                 <div className="container">
                     <div className="banner-con">
@@ -34,7 +36,9 @@ function Banner() {
 
                 </div>
             </div>
-        </div><About /></>
+        </div>
+        {/* <About /> */}
+        </>
     )
 }
 
