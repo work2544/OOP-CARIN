@@ -73,12 +73,22 @@ class Antibody implements Unit{
     }
     @Override
     public void attack(String Direction) {
-
+        ArrayList<Unit>[][] map=ImmuneSystem.getmap();
+        int[] answer=minDistanc(Direction,1);
+        for (Unit unit :map[answer[1]][answer[0]]
+        ) {
+            if(unit.getClass().getName().equals("Virus"))
+            {
+                unit.getattack(this);
+                this.hp+=gain();
+                if(unit.hp()<=0)map[answer[1]][answer[0]].remove(unit);
+            }
+        }
     }
 
     @Override
-    public void move(String Direction) {
-
+    public void getattack(Unit unit) {
+        this.hp-=unit.atk();
     }
 
     @Override
@@ -91,6 +101,14 @@ class Antibody implements Unit{
         return atk;
     }
 
+    @Override
+    public void move(String Direction) {
+        ArrayList<Unit>[][] map=ImmuneSystem.getmap();
+        int[] answer=minDistanc(Direction,1);
+        if(answer[0]<map[0].length&&answer[1]<map.length&&answer[0]>-1&&answer[1]>-1)
+        {  posx+=answer[0];
+            posy+=answer[1];}
+    }
     @Override
     public int posx() {
 
@@ -108,18 +126,6 @@ class Antibody implements Unit{
         return gain;
     }
 
-    @Override
-    public int nearby() {
-        return 0;
-    }
 
-    @Override
-    public int nearvirus() {
-        return 0;
-    }
 
-    @Override
-    public int nearantibody() {
-        return 0;
-    }
 }
