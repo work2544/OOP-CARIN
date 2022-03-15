@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { DndProvider , useDrag, useDrop} from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+import { lungsHealth } from "../components/Config";
+
 import './Carin.css'
 
 import Board from '../components/Board';
@@ -15,6 +17,9 @@ import Fast from '../components/Button/Fast';
 import { ProgressBarContainer } from '../components/healthBar/ProgressBar';
 import { Link } from 'react-router-dom';
 import HealthBar from '../components/healthBar/HealthBar';
+import Coins from '../components/Coins/Coins';
+import VirusCount from '../components/VirusCount/VirusCount';
+
 
 
 
@@ -22,7 +27,7 @@ import HealthBar from '../components/healthBar/HealthBar';
 
 export default function Carin_lungs(props) {
 
-  let health = 100;
+  let health = lungsHealth;
   const [percentRange, setProgress] = useState(0);
   const [buttonPopup, setButtonPausePop] = useState(false);
   const [click, setClick] = useState(false);
@@ -49,8 +54,14 @@ export default function Carin_lungs(props) {
             <div className='head'>
               <li>
                 <div className='healthbar' >
-                  <HealthBar />
+                  <HealthBar type={"lungs"} />
                   {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
+                </div>
+                <div className='coins'>
+                  <Coins/>
+                  </div>
+                <div className='virusCount'>
+                  <VirusCount/>
                 </div>
                 <div className='head-btn'>
                   <Link to={'/game'}><img className='zoomOut-btn' src={('/image/btn-menu/zoomOut.png')} ></img></Link>  

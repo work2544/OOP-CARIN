@@ -31,14 +31,7 @@ function AnitiBar() {
 
     
     const [board, setBoard] = useState([]);
-
     
-
-    /* const [collected, drag, dragPreview] = useDrag(() => ({
-    type : "item",
-    item: { id }
-  })) */
-  
     const addImageToBoard = (id) => {
       const itemList = ItemList.filter((picture) => id === picture.id);
       setBoard((board) => [...board, itemList[0]]);
@@ -47,19 +40,12 @@ function AnitiBar() {
 
 
   return (
-    <>
-      {/* {<div className='Board'ref={drop}>
-        {board.map((picture) => {
-          return <AntiItem url={picture.url} id={picture.id} />;
-        })}
-     </div>} */}
-      
+    
       <div className="Pictures">
         {ItemList.map((picture) => {
           return <AntiItem url={picture.url} id={picture.id} />;
         })}
       </div>
-    </>
   )
 }
 

@@ -1,0 +1,18 @@
+
+.coin-contain{
+    display:flex;
+    flex-direction: row;
+    padding-top: 12%;
+}
+
+
+.currentcredit{
+    padding-top: 8%;
+    padding-left: 10px;
+    font-family: 'Common Pixel', sans-serif;
+    font-size: large;
+    font-style: oblique;
+    text-shadow: black 2px 2px;
+    color: rgb(236, 240, 0);
+    
+}

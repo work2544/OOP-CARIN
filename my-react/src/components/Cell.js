@@ -11,6 +11,7 @@ function Cell ({x,y}) {
 
     
     
+    console.log("positon " + x,y);
     
   return (
       <div className='Cell' >

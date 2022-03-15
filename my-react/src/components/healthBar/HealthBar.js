@@ -9,7 +9,7 @@ export default class HealthBar extends Component {
 
     this.state={
     health : 100,
-    type : "",
+    type : props,
     };
 
     this.setHealth = this.setProgress.bind(this);
@@ -29,6 +29,10 @@ export default class HealthBar extends Component {
   setType(type){
     this.setState({type : type})
   }
+
+   
+
+  
 
   render() {
     return (

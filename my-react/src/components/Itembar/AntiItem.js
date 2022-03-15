@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useDrag , DragPreviewImage} from "react-dnd";
 import { GiMouse } from 'react-icons/gi';
+import Host from '../Host/Host';
 
 
 
 
 function AntiItem({ id, url }) {
   
+  
+
   const [{ isDragging }, drag,preview] = useDrag(() => ({
     type: "image",
     item: { id: id },
@@ -19,6 +22,7 @@ function AntiItem({ id, url }) {
   const selectAnti = () => {
     setClick(!click)
     console.log("createAnti")
+    
   }
   
   

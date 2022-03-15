@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FiCode, FiMenu, FiX} from "react-icons/fi";
 import { GiAbstract099} from "react-icons/gi";
 import { Link} from 'react-router-dom'
-/* import {Link} from 'react-scroll' */
+import {Link as LinkS} from 'react-scroll'
 
 
 import './Nav.css'
@@ -29,15 +29,15 @@ function Nav() {
               <div className="logo-container "  >
                   <a ><Link to="/" ></Link>{/* <GiAbstract099 /> */}</a>
               </div>
-              <ul className={click ? "active" : "menu"}>
+              <ul className={click ? "menu active" : "menu"} >
                   <li className="menu-link" onClick={closeMobileMenu}>
-                      <a><Link  to="/home" spy={true} smooth={true}>HOME</Link></a>
+                      <a><Link  to="/home" spy={true} smooth={true} offset={-70} duration={500}>HOME</Link></a>
                   </li>
                   <li className="menu-link" onClick={closeMobileMenu}>
-                      <a><Link  to="/game" spy={true} smooth={true}>GAME</Link></a>
+                    <a href='/home/#aboutgame'>ABOUT GAME</a>
                   </li>
                   <li className="menu-link" onClick={closeMobileMenu}>
-                      <a><Link  to="/aboutus" spy={true} smooth={true}>ABOUT US</Link></a>
+                      <a><Link  to="/aboutus" spy={true} smooth={true} offset={-70} duration={500}>ABOUT US</Link></a>
                   </li>
               </ul>
               <div className="mobile-menu" onClick={handleClick}>

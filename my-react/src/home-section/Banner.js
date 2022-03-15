@@ -32,12 +32,16 @@ function Banner() {
                                 <a className="banner-btn" href='/game'>Play</a>
                             </div>
                         </div>
+                        
                     </div>
-
+                   
                 </div>
+                <About/> 
             </div>
+            
         </div>
-        {/* <About /> */}
+        
+        
         </>
     )
 }

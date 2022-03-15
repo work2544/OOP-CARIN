@@ -2,10 +2,11 @@
 
 .banner-bg {
     display: flex;
+    flex-direction: column;
     height:max-content;
     background: url("https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711") no-repeat;
     background-size:cover;
-     height:768px;
+    /* height:800px; */
     overflow:auto;
     
 }.container {
@@ -60,7 +61,7 @@
 
 }
 .banner-btn:hover {
-    border: 6px solid #fff;
+    border: 5px solid #fff;
     background: transparent;
     color: #fff;
 }

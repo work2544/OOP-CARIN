@@ -9,14 +9,13 @@ export default function Game()  {
     <div id='game'>
       <div className='game'>
         <div className='game-bg'>
-        <div className='container'>
-          <div className='game-con'>
-          <div className='game-texthead'>
-          </div>
-          <div className='game-carin' >
-                <Imune/>
+          <div className='container'>
+            <div className='game-con'>
+              <div className='game-texthead'></div>
+              <div className='game-carin' >
+                  <Imune/>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>

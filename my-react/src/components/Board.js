@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDrop } from "react-dnd";
-import Config from '../Config'
+import Config from './Config'
 import './Board.css'
 import Cell from './Cell'
 

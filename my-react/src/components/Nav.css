@@ -67,6 +67,11 @@
     font-weight: bolder;
 }
 
+.menu .active{
+    color: hsla(0, 0, lightness, .4);
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
 
 .mobile-menu {
     display: none;
@@ -118,6 +123,8 @@
         height: 10vw;
         padding: 10px 0;
     }
+
+    
 
 
 

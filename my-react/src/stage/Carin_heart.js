@@ -15,6 +15,8 @@ import Fast from '../components/Button/Fast';
 import { ProgressBarContainer } from '../components/healthBar/ProgressBar';
 import { Link } from 'react-router-dom';
 import HealthBar from '../components/healthBar/HealthBar';
+import Coins from '../components/Coins/Coins';
+import VirusCount from '../components/VirusCount/VirusCount';
 
 
 
@@ -49,8 +51,14 @@ export default function Carin_heart(props) {
             <div className='head'>
               <li>
                 <div className='healthbar' >
-                  <HealthBar type = "lungs"/>
+                  <HealthBar type = "heart"/>
                   {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
+                </div>
+                <div className='coins'>
+                  <Coins/>
+                  </div>
+                <div className='virusCount'>
+                  <VirusCount/>
                 </div>
                 <div className='head-btn'>
                   <Link to={'/game'}><img className='zoomOut-btn' src={('/image/btn-menu/zoomOut.png')} ></img></Link>  

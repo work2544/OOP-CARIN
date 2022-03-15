@@ -17,7 +17,9 @@ var currentwave = 0;
 
 //player
 var currentcredit = 0;
+var heartHealth = 100;
+var lungsHealth = 100;
 
-
-
+//wave
+var currentvirus = 0;
 
