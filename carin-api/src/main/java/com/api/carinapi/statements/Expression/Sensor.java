@@ -8,13 +8,24 @@ import com.api.carinapi.statements.GlobalFile.NodeTree;
 public class Sensor implements NodeTree {
     Unit unit;
     String direction;
-    public Sensor(Unit unit, String direction)
+    String cmd;
+    public Sensor(Unit unit,String cmd)
+    {
+        this.cmd=cmd;
+        this.unit=unit;
+    }
+    public Sensor(Unit unit, String direction,String cmd)
     {
         this.direction=direction;
         this.unit=unit;
+        this.cmd=cmd;
     }
     @Override
     public int eval() throws EvalError, SyntaxError {
-        return unit.nearby();
+        if(cmd.equals("virus"))
+            return unit.nearvirus();
+        else if(cmd.equals("antibody"))
+            return unit.nearantibody();
+        else return unit.nearby(direction);
     }
 }
