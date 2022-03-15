@@ -5,7 +5,7 @@ import ProgramAST.Statement.ErrorPack.SyntaxError;
 import ProgramAST.Statement.GlobalFile.NodeTree;
 
 public class BinaryArithExpr implements NodeTree {
-    private NodeTree left, right;
+    private NodeTree left,right;
     private String op;
 
     public BinaryArithExpr(NodeTree left, String op, NodeTree right) {
