@@ -11,46 +11,47 @@ import ProgramAST.Statement.GlobalFile.NodeTree;
 import ProgramAST.Statement.GlobalFile.Variable;
 import ProgramAST.StatmentFac;
 import Unit.Unit;
+import org.w3c.dom.Node;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class Parser extends StatmentFac {
     private static ProgramTokenizer tkz;
     private static Map<String,Integer> unitvar;
     private static Unit unit;
+    private int line;
+    static HashSet<String> re_word=new HashSet(){{add("antibody");add("virus");add("if");add("else");add("while");add("shoot");add("move");add("nearby");add("then");add("left");add("right");add("up");add("down");add("upleft");add("upright");add("downleft");add("downright");}};
     static HashSet<String> myDirection=new HashSet(){{add("left");add("right");add("up");add("down");add("upleft");add("upright");add("downleft");add("downright");}};
-    public Parser(String input, Map<String, Integer> unitvar, Unit unit) throws SyntaxError {
-        this.tkz=new ProgramTokenizer(input);
-        this.unitvar=unitvar;
-        this.unit=unit;
+    public Parser(String input[], Map<String, Integer> unitvar, Unit unit) throws SyntaxError {
+        tkz=new ProgramTokenizer(input[line]);
+        Parser.unitvar =unitvar;
+        Parser.unit =unit;
+        line++;
     }
-    public static NodeTree parseState()  {
-       try {
-           if (tkz.peek("<") || tkz.peek("move") || tkz.peek("shoot")) {
+    public static LinkedList<NodeTree> parseProgram(){
+        return null;
+    }
+    public static NodeTree parseState() throws SyntaxError, EvalError {
+
+           if (tkz.peek("move") || tkz.peek("shoot")) {
                return parseCommand();
-           } else if (tkz.peek("if")) {
+           }
+           else if (tkz.peek("if")) {
                return parseIf();
            } else if (tkz.peek("while")) {
-
+            return parseWhile();
            } else if (tkz.peek("{")) {
-
+            return  parseBlock();
            }
-           return null;
-       }
-       catch (EvalError e){
-
-       }
-       catch (SyntaxError e){
-
-       }
-    return new MyNumber(0);
+           else if(re_word.contains(tkz.peek())){
+               return parseAssign();
+           }
+   throw new SyntaxError("Wrong State");
     }
-    public static NodeTree parseCommand() throws SyntaxError, EvalError {
-        if(tkz.peek("<")){ //assign command
-            tkz.consume("<");
+    public static NodeTree parseAssign() throws SyntaxError, EvalError {
             String x = tkz.consume();
-            tkz.consume(">");
             if(tkz.peek("=")){
                 tkz.consume("=");
                 Variable tempVar= new Variable(x,unitvar);
@@ -58,24 +59,20 @@ public class Parser extends StatmentFac {
                 while(!tkz.peek("")){
                     expr.append(tkz.consume());
                 }
-                return creatAssignStatement(tempVar, new Parser(expr.toString(), unitvar,unit).parseExpression().eval());
-            }
+                return creatAssignStatement(tempVar, new Parser(new String[]{expr.toString()}, unitvar,unit). parseExpression().eval());
+        }
             else{
                 throw new SyntaxError("No assign command");
             }
-        }
-        else{
-            if(tkz.peek("move")||tkz.peek("shoot")){
+    }
+    public static NodeTree parseCommand() throws SyntaxError {
                 String thecmd=tkz.consume();
                 String direct= tkz.consume();
                 if(myDirection.contains(direct))
                 {
                     return creatStatement(thecmd,direct,unit);
                 }
-                else throw new SyntaxError("Wrong direction "+direct);
-            }
-            throw new SyntaxError("Wrong command "+tkz.peek());
-        }
+        throw new SyntaxError("Wrong command "+tkz.peek());
     }
 
     public static NodeTree parseIf() throws SyntaxError, EvalError {
@@ -102,14 +99,20 @@ public class Parser extends StatmentFac {
                 elsstate.append(tkz.consume());
             }
         }
-        return creatIfStatement(new Parser(ifexpr.toString(),unitvar,unit).parseExpression(),new Parser(thenstate.toString(),unitvar,unit).parseState(),new Parser(thenstate.toString(),unitvar,unit).parseState());
+        return creatIfStatement(new Parser(new String[]{ifexpr.toString()},unitvar,unit).parseExpression(),new Parser(new String[]{thenstate.toString()},unitvar,unit).parseState(),new Parser(new String[]{elsstate.toString()},unitvar,unit).parseState());
     }
-    //    public static NodeTree parseWhile() throws SyntaxError, EvalError {
-//
-//    }
-//    public static NodeTree parseBlock() throws SyntaxError, EvalError {
-//
-//    }
+        public static NodeTree parseWhile() throws SyntaxError, EvalError {
+        tkz.consume("while");
+        return parseExpression();
+
+    }
+    public static NodeTree parseBlock() throws SyntaxError, EvalError {
+        NodeTree nt=null;
+    tkz.consume("{");
+    nt=parseState();
+    tkz.consume("}");
+    return nt;
+    }
     public static NodeTree parseExpression() throws SyntaxError, EvalError {
         NodeTree e = parseTerm();
         while (tkz.peek("+") || tkz.peek("-")) {
@@ -150,22 +153,15 @@ public class Parser extends StatmentFac {
     }
     private static NodeTree parsePower() throws SyntaxError, EvalError {
         String xL = tkz.peek();
-        NodeTree nt=null;
+        NodeTree nt=parseSensor();
         //identity and number case
-        if(xL.equals("<"))
-        {
-            tkz.consume("<");
-            String x = tkz.consume();
-            tkz.consume(">");
-            if (isNumber(x)) {
+
+
+            if (isNumber(xL)) {
+                String x = tkz.consume();
                 if(Integer.parseInt(x)<0) throw new EvalError(x+" is negative");
                 else nt= new MyNumber(Integer.parseInt(x));
             }
-            else{
-                nt=new MyNumber(new Variable(x,unitvar).eval());
-            }
-
-        }
         //exp case
         else if(xL.equals("("))
         {
@@ -173,24 +169,28 @@ public class Parser extends StatmentFac {
             nt = parseExpression();
             tkz.consume(")");
         }
-        else //sensor case
-        {
-            nt=parseSensor();
-        }
+            else{
+                String x = tkz.consume();
+                nt=new MyNumber(new Variable(x,unitvar).eval());
+            }
+
         return nt;
 
     }
     private static NodeTree parseSensor() throws SyntaxError {
         if(tkz.peek("virus")){ //closet virus
-
+            return new Sensor(unit,tkz.consume());
         }
         else if(tkz.peek("antibody"))
         {
-
+            return new Sensor(unit,tkz.consume());
         }
         else if(tkz.peek("nearby"))
         {
-
+            String sens=tkz.consume();
+            String direct= tkz.consume();
+            if(!myDirection.contains(direct))throw new SyntaxError("Wrong direction");
+            return new Sensor(unit,direct,sens);
         }
         return null;
     }

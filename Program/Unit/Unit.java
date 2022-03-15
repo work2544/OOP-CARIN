@@ -7,7 +7,7 @@ public interface Unit{
     int posx();
     int posy();
     int gain();
-    int nearby();
+    int nearby(String Direction);
     int nearvirus();
     int nearantibody();
     void move(String Direction);

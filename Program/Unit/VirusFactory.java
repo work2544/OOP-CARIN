@@ -82,7 +82,7 @@ class Virus implements Unit {
     public void move(String Direction) {
     }
     @Override
-    public int nearby() {
+    public int nearby(String Direction) {
         return 0;
     }
 

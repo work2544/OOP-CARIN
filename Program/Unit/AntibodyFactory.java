@@ -109,7 +109,7 @@ class Antibody implements Unit{
     }
 
     @Override
-    public int nearby() {
+    public int nearby(String Direction) {
         return 0;
     }
 
