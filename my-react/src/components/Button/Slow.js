@@ -4,11 +4,15 @@ import { useState } from 'react'
 export default function Slow() {
 
 
-    const [click, setClick] = useState(false);
+    const [click, setClick] = useState(window.isSlow);
     const handleClick = () => setClick(!click);
     console.log(click);
 
-
+    if(!click){
+      console.log("NotSlow");
+    }else{
+      console.log("Slow");
+    }
 
 
   return (

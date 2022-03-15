@@ -1,26 +1,33 @@
 import React, { Component } from 'react'
 import { useDrop } from 'react-dnd'
 import './Cell.css'
-
-import * as tileBlueFrame from '../assets/cell/tileBlueFrame.png';
-
+import Host from './Host/Host'
 
 
 
-function Cell ({x,y}) {
 
-    
-    
-    console.log("positon " + x,y);
-    
-  return (
-      <div className='Cell' >
-        
-      </div>
+export default function Cell({anti,x,y}) {
 
-    )
-
+  const position = {
+    x : x,
+    y : y,
+  }
+  
+  const cellData = {
+    anti : anti,
+    position,
   }
 
+  
 
-export default Cell
+  console.log(cellData);
+
+
+
+  return (
+    <div className='Cell'></div>
+  )
+}
+
+
+

@@ -4,9 +4,15 @@ import { useState } from 'react'
 export default function Fast() {
 
 
-    const [click, setClick] = useState(false);
+    const [click, setClick] = useState(window.isFase);
     const handleClick = () => setClick(!click);
-    console.log(click);
+
+    if(!click){
+      console.log("NotFast");
+    }else{
+      console.log("Fast");
+    }
+    
 
 
 

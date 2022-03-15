@@ -4,11 +4,15 @@ import { useState } from 'react'
 export default function Pause() {
 
 
-    const [click, setClick] = useState(false);
+    const [click, setClick] = useState(window.isPause);
     const handleClick = () => setClick(!click);
     console.log(click);
 
-
+    if(!click){
+      console.log("Running");
+    }else{
+      console.log("Pause");
+    }
 
 
   return (

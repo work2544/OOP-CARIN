@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { useState } from 'react'
 import { DndProvider , useDrag, useDrop} from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import axios from 'axios'
 
 import './Carin.css'
+
 
 import Board from '../components/Board';
 import AntiBar from '../components/AntiBar';
@@ -24,6 +26,12 @@ import VirusCount from '../components/VirusCount/VirusCount';
 
 export default function Carin_heart(props) {
 
+  const heart = () => {
+    axios.get("http://localhost:3001/heart").then(res => {
+      console.log(res.data)
+    })
+  }
+
   let health = 100;
   const [percentRange, setProgress] = useState(0);
   const [buttonPopup, setButtonPausePop] = useState(false);
@@ -31,7 +39,7 @@ export default function Carin_heart(props) {
   const handleClick = () => setClick(!click);
   console.log(click);
 
-  
+  window.heartHealth = 100;
 
 
     return  (
@@ -50,10 +58,7 @@ export default function Carin_heart(props) {
 
             <div className='head'>
               <li>
-                <div className='healthbar' >
-                  <HealthBar type = "heart"/>
-                  {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
-                </div>
+                
                 <div className='coins'>
                   <Coins/>
                   </div>
@@ -61,11 +66,15 @@ export default function Carin_heart(props) {
                   <VirusCount/>
                 </div>
                 <div className='head-btn'>
-                  <Link to={'/game'}><img className='zoomOut-btn' src={('/image/btn-menu/zoomOut.png')} ></img></Link>  
+                  <Link to={'/game'}><img className='zoomOut-btn' src={('/image/btn-menu/zoomOut.png')} onClick={console.log("zoomOut")}></img></Link>  
                   <button className='mu'><Slow/></button>
                   <button className='mu'><Pause/></button>
                   <button className='mu'><Fast/></button>
                   <button className='mu'><Menu/></button>
+                </div>
+                <div className='healthbar' >
+                  <HealthBar type = "heart" health={window.heartHealth} />
+                  {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
                 </div>
               </li> 
             </div>

@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import './Coins.css'
 
+
 export default function Coins() {
 
   const [currentcoin , setCoin] = useState(0);
+
+  
+  
+  console.log("coin : " + currentcoin )
 
   return (
     <div className='Coins'>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Popup from '../components/Menu/Popup'
+import axios from 'axios'
 
 import { useState } from 'react'
 import { Link} from 'react-router-dom'
@@ -8,6 +9,12 @@ import Carin_heart from '../stage/Carin_heart';
 
 import './Imune.css';
 export default function Imune() {
+
+  const imune = () => {
+    axios.get("http://localhost:3001/game").then(res => {
+      console.log(res.data)
+    })
+  }
 
   const [buttonPopup1, setButtonPopup1] = useState(false);
   const [buttonPopup2, setButtonPopup2 ] = useState(false);

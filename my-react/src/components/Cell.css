@@ -24,3 +24,9 @@
 .Cell:active{
     background: url('../assets/cell/tileBlueFull.png');
 }
+
+.anti-create{
+    position: absolute;
+    align-items: center;
+    align-content: center;
+}
