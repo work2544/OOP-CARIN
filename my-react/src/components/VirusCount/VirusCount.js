@@ -5,6 +5,9 @@ export default function VirusCount() {
 
   const [count ,setCount] = useState(0);
 
+  window.virus_count = 0;
+  
+
   return (
     <div className='VirusCount'>
         <div className='viruscount-contain'>

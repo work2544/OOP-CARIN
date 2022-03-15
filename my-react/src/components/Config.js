@@ -8,6 +8,7 @@ var TILE_SIZE = 32;
 var isRunning = false;
 var isPause = false;
 var isOver = false;
+var antiSelect = false;
 //unite
 var virus_count = 0;
 var anti_count = 0;
@@ -16,10 +17,12 @@ var currentwave = 0;
 
 
 //player
-var currentcredit = 0;
+
 var heartHealth = 100;
 var lungsHealth = 100;
 
 //wave
 var currentvirus = 0;
+
+
 

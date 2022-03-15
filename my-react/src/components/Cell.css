@@ -3,7 +3,7 @@
     width: 64px;
     height: 64px;
     background: url('../assets/cell/tileGreenFull.png');
-    padding: 10px;
+    /* padding: 10px; */
     border-style: solid;
     border-width:thin;
     border-color: black;
@@ -23,4 +23,13 @@
 
 .Cell:active{
     background: url('../assets/cell/tileBlueFull.png');
+}
+
+.Cell img{
+    
+    position: absolute;
+    object-fit: cover;
+    width: 64px;
+    height: 64px;
+    
 }

@@ -11,6 +11,10 @@
 
 .Pictures {
     /* margin: 10px; */
+    padding-left: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
 
 img {

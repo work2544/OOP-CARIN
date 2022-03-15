@@ -1,12 +1,23 @@
 import React ,{Component}from 'react'
+import { useState } from 'react';
 import "./Game.css"
 import  Nav  from "../components/Nav";
 import Imune from '../carin-component/Imune';
+import axios from 'axios'
+import AntiItem from '../components/AntiItem';
+import Cell from '../components/Cell';
+import Host from '../components/Host/Host';
 
-export default function Game()  {
-  return (
+
+
+
+export default class Game extends Component {
+
+
+  render() {
     
-    <div id='game'>
+    return (
+      <div id='game'>
       <div className='game'>
         <div className='game-bg'>
           <div className='container'>
@@ -14,11 +25,14 @@ export default function Game()  {
               <div className='game-texthead'></div>
               <div className='game-carin' >
                   <Imune/>
+                  
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+    )
+  }
 }
+

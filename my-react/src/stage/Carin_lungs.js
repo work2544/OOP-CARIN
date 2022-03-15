@@ -17,17 +17,17 @@ import Fast from '../components/Button/Fast';
 import { ProgressBarContainer } from '../components/healthBar/ProgressBar';
 import { Link } from 'react-router-dom';
 import HealthBar from '../components/healthBar/HealthBar';
-import Coins from '../components/Coins/Coins';
+import Coins from '../components/Coins';
 import VirusCount from '../components/VirusCount/VirusCount';
 
 
 
 
-
+window.lungsHealth = 100
 
 export default function Carin_lungs(props) {
 
-  let health = lungsHealth;
+  const globals = require ("../utils/global.js")
   const [percentRange, setProgress] = useState(0);
   const [buttonPopup, setButtonPausePop] = useState(false);
   const [click, setClick] = useState(false);
@@ -53,10 +53,7 @@ export default function Carin_lungs(props) {
 
             <div className='head'>
               <li>
-                <div className='healthbar' >
-                  <HealthBar type={"lungs"} />
-                  {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
-                </div>
+                
                 <div className='coins'>
                   <Coins/>
                   </div>
@@ -69,6 +66,10 @@ export default function Carin_lungs(props) {
                   <button className='mu'><Pause/></button>
                   <button className='mu'><Fast/></button>
                   <button className='mu'><Menu/></button>
+                </div>
+                <div className='healthbar' >
+                  <HealthBar type={"lungs"} health={globals.healthLungs}/>
+                  {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
                 </div>
               </li> 
             </div>

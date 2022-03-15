@@ -2,12 +2,12 @@
 .coin-contain{
     display:flex;
     flex-direction: row;
-    padding-top: 12%;
+    padding-top: 0%;
 }
 
 
 .currentcredit{
-    padding-top: 8%;
+    padding-top: 20%;
     padding-left: 10px;
     font-family: 'Common Pixel', sans-serif;
     font-size: large;
