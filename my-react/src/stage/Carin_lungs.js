@@ -27,7 +27,11 @@ window.lungsHealth = 100
 
 export default function Carin_lungs(props) {
 
+<<<<<<< HEAD
   const globals = require ("../utils/global.js")
+=======
+  
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
   const [percentRange, setProgress] = useState(0);
   const [buttonPopup, setButtonPausePop] = useState(false);
   const [click, setClick] = useState(false);
@@ -68,7 +72,11 @@ export default function Carin_lungs(props) {
                   <button className='mu'><Menu/></button>
                 </div>
                 <div className='healthbar' >
+<<<<<<< HEAD
                   <HealthBar type={"lungs"} health={globals.healthLungs}/>
+=======
+                  <HealthBar type={"lungs"} health={window.lungsHealth}/>
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
                   {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
                 </div>
               </li> 

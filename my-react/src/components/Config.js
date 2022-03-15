@@ -17,7 +17,11 @@ var currentwave = 0;
 
 
 //player
+<<<<<<< HEAD
 
+=======
+var currentcredit = 100;
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 var heartHealth = 100;
 var lungsHealth = 100;
 
@@ -26,3 +30,7 @@ var currentvirus = 0;
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8

@@ -21,6 +21,15 @@ export default class App extends Component {
 	
 	
 
+<<<<<<< HEAD
+=======
+
+export default class App extends Component {
+
+
+	
+
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 	render(){
 		return (
 	<div></div>

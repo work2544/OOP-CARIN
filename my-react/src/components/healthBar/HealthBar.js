@@ -16,11 +16,18 @@ export default class HealthBar extends Component {
     };
 
     this.setHealth = this.setProgress.bind(this);
+<<<<<<< HEAD
     console.log(this.state.health);
     this.gameResult();
   }
   
   
+=======
+    console.log(this.state.health)
+    this.gameResult();
+  }
+
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
   static getDerivedStateFromProps(props) {
     return {type: props.type ,};
   }
@@ -35,10 +42,13 @@ export default class HealthBar extends Component {
     this.setState({type : type})
   }
 
+<<<<<<< HEAD
   setHealth(health){
     this.setState({health : health})
   }
 
+=======
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
    gameResult(){
      if(this.state.health <= 0){
       return GameResult();
@@ -59,9 +69,15 @@ export default class HealthBar extends Component {
           </div>
         
       </div>
+<<<<<<< HEAD
       <button onClick={this.setProgress.bind(this, this.state.health > 0 ? this.state.health-20 : 100)}>Decrease</button>
       <button onClick={this.setProgress.bind(this, 100)}>Reset</button>
       <button onClick={this.setProgress.bind(this, this.state.health < 100 ? this.state.health + 20 : 100)}>Increase</button>
+=======
+      {/* <button onClick={this.setProgress.bind(this, this.state.health > 0 ? this.state.health - 20 : 0)}>Decrease</button>
+      <button onClick={this.setProgress.bind(this, 100)}>Reset</button>
+      <button onClick={this.setProgress.bind(this, this.state.health < 100 ? this.state.health + 20 : 100)}>Increase</button> */}
+>>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
     </div>
     )
   }
