@@ -21,17 +21,30 @@ public class Parser extends StatmentFac {
     private static ProgramTokenizer tkz;
     private static Map<String,Integer> unitvar;
     private static Unit unit;
-    private int line;
+    private static int line;
+    private static String[] input;
     static HashSet<String> re_word=new HashSet(){{add("antibody");add("virus");add("if");add("else");add("while");add("shoot");add("move");add("nearby");add("then");add("left");add("right");add("up");add("down");add("upleft");add("upright");add("downleft");add("downright");}};
     static HashSet<String> myDirection=new HashSet(){{add("left");add("right");add("up");add("down");add("upleft");add("upright");add("downleft");add("downright");}};
     public Parser(String input[], Map<String, Integer> unitvar, Unit unit) throws SyntaxError {
+        Parser.input =input;
         tkz=new ProgramTokenizer(input[line]);
         Parser.unitvar =unitvar;
         Parser.unit =unit;
-        line++;
     }
-    public static LinkedList<NodeTree> parseProgram(){
-        return null;
+    public Parser(String input) throws SyntaxError {
+        tkz=new ProgramTokenizer(input);
+    }
+    public static void GoNextLine() throws SyntaxError {
+        line++;
+        tkz=new ProgramTokenizer(input[line]);
+    }
+    public static LinkedList<NodeTree> parseProgram() throws SyntaxError, EvalError {
+        LinkedList<NodeTree> nt=new LinkedList<>();
+        while(line<input.length){
+            nt.add(parseState());
+            GoNextLine();
+        }
+        return nt;
     }
     public static NodeTree parseState() throws SyntaxError, EvalError {
 
@@ -45,7 +58,7 @@ public class Parser extends StatmentFac {
            } else if (tkz.peek("{")) {
             return  parseBlock();
            }
-           else if(re_word.contains(tkz.peek())){
+           else if(!re_word.contains(tkz.peek())){
                return parseAssign();
            }
    throw new SyntaxError("Wrong State");
@@ -59,7 +72,7 @@ public class Parser extends StatmentFac {
                 while(!tkz.peek("")){
                     expr.append(tkz.consume());
                 }
-                return creatAssignStatement(tempVar, new Parser(new String[]{expr.toString()}, unitvar,unit). parseExpression().eval());
+                return creatAssignStatement(tempVar, new Parser(expr.toString()). parseExpression().eval());
         }
             else{
                 throw new SyntaxError("No assign command");
@@ -79,9 +92,12 @@ public class Parser extends StatmentFac {
         StringBuilder ifexpr=new StringBuilder();
         StringBuilder thenstate=new StringBuilder();
         StringBuilder elsstate=new StringBuilder();
+        tkz.consume("if");
         while(!tkz.peek("then")) //find the expr
         {
+
             ifexpr.append(tkz.consume());
+            if(tkz.peek("")&&line<input.length)GoNextLine();
         }
         if(tkz.peek("then"))
         {
@@ -89,8 +105,14 @@ public class Parser extends StatmentFac {
             while(!tkz.peek("else")) //find the state
             {
                 thenstate.append(tkz.consume());
+                if(tkz.peek("")&&line<input.length)GoNextLine();
             }
+
         }
+
+        return creatIfStatement(new Parser(ifexpr.toString()).parseExpression(),new Parser(thenstate.toString()).parseState(),new Parser(elsstate.toString()).parseState());
+    }
+    public static NodeTree parseElse(){
         if(tkz.peek("else"))
         {
             tkz.consume("else");
@@ -99,7 +121,6 @@ public class Parser extends StatmentFac {
                 elsstate.append(tkz.consume());
             }
         }
-        return creatIfStatement(new Parser(new String[]{ifexpr.toString()},unitvar,unit).parseExpression(),new Parser(new String[]{thenstate.toString()},unitvar,unit).parseState(),new Parser(new String[]{elsstate.toString()},unitvar,unit).parseState());
     }
         public static NodeTree parseWhile() throws SyntaxError, EvalError {
         tkz.consume("while");
