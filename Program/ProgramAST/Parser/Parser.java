@@ -95,7 +95,6 @@ public class Parser extends StatmentFac {
         tkz.consume("if");
         while(!tkz.peek("then")) //find the expr
         {
-
             ifexpr.append(tkz.consume());
             if(tkz.peek("")&&line<input.length)GoNextLine();
         }
@@ -112,7 +111,7 @@ public class Parser extends StatmentFac {
 
         return creatIfStatement(new Parser(ifexpr.toString()).parseExpression(),new Parser(thenstate.toString()).parseState(),new Parser(elsstate.toString()).parseState());
     }
-    public static NodeTree parseElse(){
+    public static NodeTree parseElse() throws SyntaxError {
         if(tkz.peek("else"))
         {
             tkz.consume("else");

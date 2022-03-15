@@ -77,24 +77,186 @@ class Virus implements Unit {
     }
     @Override
     public void attack(String Direction) {
+        ArrayList<Unit>[][] map=ImmuneSystem.getmap();
+        int[] answer=minDistanc(Direction,1);
+        for (Unit unit :map[answer[1]][answer[0]]
+             ) {
+            if(unit.getClass().getName().equals("Antibody"))
+            {
+                unit.getattack(this);
+                this.hp+=gain();
+                if(unit.hp()<=0)map[answer[1]][answer[0]].remove(unit);
+            }
+        }
     }
+
+    @Override
+    public void getattack(Unit unit) {
+        this.hp-=unit.atk();
+    }
+
     @Override
     public void move(String Direction) {
+        ArrayList<Unit>[][] map=ImmuneSystem.getmap();
+        int[] answer=minDistanc(Direction,1);
+       if(answer[0]<map[0].length&&answer[1]<map.length&&answer[0]>-1&&answer[1]>-1)
+       {  posx+=answer[0];
+        posy+=answer[1];}
     }
-    @Override
-    public int nearby(String Direction) {
-        return 0;
-    }
+//    @Override
+//    public int nearby(String direction) {
+//        ArrayList[][] map=ImmuneSystem.getmap();
+//        if(direction.equals("up"))
+//        {
+//            for (int i=posy;i>=0;i--){
+//                if(!map[i][posx].isEmpty()){
+//                    return (posy-i)*10+1;
+//                }
+//            }
+//        }
+//        else if(direction.equals("down")){
+//            for (int i=posy;i< map.length;i++){
+//                if(!map[i][posx].isEmpty()){
+//                    return (i-posy)*10+5;
+//                }
+//            }
+//        }
+//        else if(direction.equals("left")){
+//            for (int i=posx;i>=0;i--){
+//                if(!map[posy][i].isEmpty()){
+//                    return (posx-i)*10+7;
+//                }
+//            }
+//        }
+//        else if(direction.equals("right"))
+//        {
+//            for (int i=posx;i<map[0].length;i++){
+//                if(!map[posy][i].isEmpty()){
+//                    return (i-posx)*10+3;
+//                }
+//            }
+//        }
+//        else if(direction.equals("upleft")){
+//            for (int i=posy;i>=0;i--){ //up
+//                for (int j=posx;i>0;i--){ //left
+//                    if(!map[i][j].isEmpty()){
+//                        return (posx-j)*10+8;
+//                    }
+//                    i--;
+//                    if(i<0)break;
+//                }
+//
+//            }
+//        }
+//        else if(direction.equals("upright")){
+//            for (int i=posy;i>=0;i--){ //up
+//                for (int j=posx;j<map[0].length;j++){ //right
+//                    if(!map[i][j].isEmpty()){
+//                        return (j-posx)*10+2;
+//                    }
+//                    i--;
+//                    if(i<0)break;
+//                }
+//
+//            }
+//        }
+//        else if(direction.equals("downleft")){
+//            for (int i=posy;i< map.length;i++){ //down
+//                for (int j=posx;j>=0;j--) { //left
+//                    if (!map[i][j].isEmpty()) {
+//                        return (posx-j) * 10 + 6;
+//                    }
+//                    i++;
+//                }
+//                if(i>= map.length)break;
+//            }
+//        }
+//        else if(direction.equals("downright")){
+//            for (int i=posy;i< map.length;i++){ //down
+//                for (int j=posx;j<map[0].length;j++) { //right
+//                    if (!map[i][posx].isEmpty()) {
+//                        return (posx-j) * 10 + 4;
+//                    }
+//                    if(i>= map.length)break;
+//                }
+//            }
+//        }
+//
+//        return 0;
+//    }
 
-    @Override
-    public int nearvirus() {
-        return 0;
-    }
+//    @Override
+//    public int nearvirus() {
+//        ArrayList[][] map=ImmuneSystem.getmap();
+//        //หา 8 ทิศ แล้วหามิน
+//        int[] neardist=new int[8];
+//        //up
+//        for (int i=posy;i>=0;i--){
+//            if(map[i][posx].isEmpty()){
+//                return (posy-i)*10+1;
+//            }
+//        }
+//        //down
+//        for (int i=posy;i< map.length;i++){
+//            if(!map[i][posx].isEmpty()){
+//                return (i-posy)*10+5;
+//            }
+//        }
+//        //left
+//        for (int i=posx;i>=0;i--){
+//            if(!map[posy][i].isEmpty()){
+//                return (posx-i)*10+7;
+//            }
+//        }
+//        //right
+//        for (int i=posx;i<map[0].length;i++){
+//            if(!map[posy][i].isEmpty()){
+//                return (i-posx)*10+3;
+//            }
+//        }
+//        //upleft
+//        for (int i=posy;i>=0;i--){ //up
+//            for (int j=posx;i>0;i--){ //left
+//                if(!map[i][j].isEmpty()){
+//                    return (posx-j)*10+8;
+//                }
+//                i--;
+//                if(i<0)break;
+//            }
+//        }
+//        //upright
+//        for (int i=posy;i>=0;i--){ //up
+//            for (int j=posx;j<map[0].length;j++){ //right
+//                if(!map[i][j].isEmpty()){
+//                    return (j-posx)*10+2;
+//                }
+//                i--;
+//                if(i<0)break;
+//            }
+//
+//        }
+//        //downleft
+//        for (int i=posy;i< map.length;i++){ //down
+//            for (int j=posx;j>=0;j--) { //left
+//                if (!map[i][j].isEmpty()) {
+//                    return (posx-j) * 10 + 6;
+//                }
+//                i++;
+//            }
+//            if(i>= map.length)break;
+//        }
+//        //downright
+//        for (int i=posy;i< map.length;i++){ //down
+//            for (int j=posx;j<map[0].length;j++) { //right
+//                if (!map[i][posx].isEmpty()) {
+//                    return (posx-j) * 10 + 4;
+//                }
+//                if(i>= map.length)break;
+//            }
+//        }
+//        return 0;
+//    }
 
-    @Override
-    public int nearantibody() {
-        return 0;
-    }
     @Override
     public int hp() {
         return hp;
