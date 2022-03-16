@@ -3,7 +3,10 @@ package com.api.carinapi.Controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.api.carinapi.beans.Create_antibody;
+import com.api.carinapi.beans.Create_virus;
+import com.api.carinapi.beans.RecieveApi;
+import com.api.carinapi.beans.SenderApi;
+import com.api.carinapi.beans.SenderApi_Info;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,16 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RequestMapping("/Antibody")
 public class UnitController {
-    List<Create_antibody> antibodyList = new ArrayList<>();
+    List<SenderApi> returnList = new ArrayList<>();
     
     @PostMapping("/create")
-    public String add(@RequestBody Create_antibody antibody){
-        antibodyList.add(new Create_antibody(antibody.getType(), antibody.getPosx(), antibody.getPosy()));
-        return "New student is added";
+    public String add(@RequestBody RecieveApi antibody){
+        RecieveApi newAntibody = new RecieveApi(antibody.getData(), antibody.isPause());
+
+        //SenderApi_Info info = new SenderApi_Info("melee", 0, 0);
+        //SenderApi returnVirus = new SenderApi()
+        //returnList.add(new SenderApi(antibody.getData(), true));
+        return "added";
     }
 
     @GetMapping("/getAll")
-    public List<Create_antibody> list(){
-        return antibodyList;
+    public List<SenderApi> list(){
+        return returnList;
     }
 }
