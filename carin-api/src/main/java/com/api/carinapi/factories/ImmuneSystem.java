@@ -59,6 +59,7 @@ public class ImmuneSystem {
             assert gaincredit > 0;
         }
         private  void imsetup(VirusFactory vf,AntibodyFactory af){
+            //send api to front end
             vf.Vsetup();
             af.AntibodySetup();
         }
@@ -73,6 +74,7 @@ public class ImmuneSystem {
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
                         if (map[i][j].size() > 0) {
+
                             System.out.print("*" + map[i][j].size());
                         } else {
                             System.out.print("-");
@@ -89,7 +91,7 @@ public class ImmuneSystem {
             }
     }
     public static void main(String[] args) throws InterruptedException {
-        ImmuneHandle IH=new ImmuneHandle(500,100,15,2,100,10,5,200,2,50);
+        ImmuneHandle IH=new ImmuneHandle(1000,100,15,2,100,10,5,200,2,50);
         ImmuneSystem IS=new ImmuneSystem(15,7);
          for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
