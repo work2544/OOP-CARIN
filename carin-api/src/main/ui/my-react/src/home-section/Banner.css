@@ -1,0 +1,73 @@
+
+
+.banner-bg {
+    display: flex;
+    flex-direction: column;
+    height:max-content;
+    background: url("https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711") no-repeat;
+    background-size:cover;
+    /* height:800px; */
+    overflow:auto;
+    
+}.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    
+}
+
+.banner-con {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+   
+    
+    
+}
+
+.banner-logo{
+    
+    background: url("../assets/logo-carin.png");
+    background-size: cover;
+    width: 720px;
+    
+    background-position: center;
+    justify-content: center;
+    image-rendering: pixelated;
+    padding-top: 30%;
+}
+
+.banner-text {
+    padding-top: 30%;
+    color: #fff;
+    text-align:center;
+    font-family: 'Common Pixel', sans-serif;
+    
+}
+.banner-btn {
+    
+    background: #fff;
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #333;
+    border: 3px solid transparent;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 10px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    cursor:pointer;
+    font-family: 'Common Pixel', sans-serif;
+
+}
+.banner-btn:hover {
+    border: 5px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .banner-text {
+        padding: 0 2rem;
+    }
+}

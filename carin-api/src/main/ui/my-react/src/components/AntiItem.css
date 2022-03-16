@@ -1,0 +1,21 @@
+#AntiItem{
+
+}
+
+
+
+.btn-item{
+    width: 128px;
+    height: 90px;
+}
+
+.item .value {
+    top: 130px;
+    padding-left: 21%;
+    position: absolute;
+    font-size: 1.5rem;
+    color: #000;
+    font-family: 'Common Pixel', sans-serif;
+}
+
+
