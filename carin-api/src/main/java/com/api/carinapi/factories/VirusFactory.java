@@ -1,19 +1,18 @@
-package Unit;
+package com.api.carinapi.factories;
 
-import ImmuneSystemPack.ImmuneSystem;
-import ProgramAST.Parser.Parser;
-import ProgramAST.Parser.ReadGenetic;
-import ProgramAST.Statement.ErrorPack.EvalError;
-import ProgramAST.Statement.ErrorPack.SyntaxError;
-import ProgramAST.Statement.GlobalFile.NodeTree;
+import static java.lang.Thread.sleep;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Map;
+import java.util.Random;
 
-
-import static java.lang.Thread.sleep;
+import com.api.carinapi.interfaces.Unit;
+import com.api.carinapi.statements.ErrorPack.EvalError;
+import com.api.carinapi.statements.ErrorPack.SyntaxError;
+import com.api.carinapi.statements.GlobalFile.NodeTree;
+import com.api.carinapi.utils.Parser;
+import com.api.carinapi.utils.ReadGenetic;
 
 public class VirusFactory implements Runnable {
     private  int hp, atk,gain;
