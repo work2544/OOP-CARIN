@@ -31,11 +31,14 @@ public  class StatmentFac {
     public NodeTree creatWhileStatement(NodeTree expr, NodeTree statement) {
         return new WhileState(expr, statement);
     }
-    public NodeTree creatAssignStatement(Variable var,int bina){
+    public NodeTree creatAssignStatement(Variable var,NodeTree bina){
         return new Command(var,bina);
     }
     public NodeTree creatIfStatement(NodeTree ifexp, NodeTree thenstate, NodeTree elsestate) {
         return new IfState(ifexp, thenstate, elsestate);
+    }
+    public NodeTree creatIfStatement(NodeTree ifexp, NodeTree thenstate) {
+        return new IfState(ifexp, thenstate);
     }
     public NodeTree creatStatement(String identifier, Map<String,Integer> allvar)
     {

@@ -13,12 +13,18 @@ public class IfState implements NodeTree {
         this.thenstate=thenstate;
         this.elsestate=elsestate;
    }
+    public IfState(NodeTree ifexp,NodeTree thenstate)
+    {
+        this.ifexp=ifexp;
+        this.thenstate=thenstate;
+        this.elsestate=null;
+    }
 
     @Override
     public int eval() throws SyntaxError, EvalError {
        if(ifexp.eval()>0)
            thenstate.eval();
-       else
+       else if(elsestate!=null)
            elsestate.eval();
         return 0;
     }

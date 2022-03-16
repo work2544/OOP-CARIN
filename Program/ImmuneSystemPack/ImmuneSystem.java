@@ -1,21 +1,19 @@
 package ImmuneSystemPack;
-import ProgramAST.Statement.GlobalFile.NodeTree;
-import Unit.*;
-import org.w3c.dom.Node;
 
-import java.util.ArrayList;
+import Unit.*;
+
 public class ImmuneSystem {
     protected static   int m,n;
     protected static int Time;
-    protected static ArrayList<Unit>[][] map;
+    protected static Unit[][] map;
 
     public ImmuneSystem(int m,int n){
         ImmuneSystem.m=m;
         ImmuneSystem.n=n;
         Time=0;
-        map=new ArrayList[n][m];
+        map=new Unit[n][m];
     }
-    public static ArrayList[][] getmap()
+    public static Unit[][] getmap()
     {
         return map;
     }
@@ -66,22 +64,42 @@ public class ImmuneSystem {
             VirusFactory vr=new VirusFactory(vrhealth,vratk,vrgain);
             AntibodyFactory atb=new AntibodyFactory(atbihealth,atbatk,atbgain,movecost,antibodycost);
             Thread vrthread=new Thread(vr);
-            imsetup(vr,atb);
-            vrthread.setDaemon(true);
-            vrthread.start();
+             imsetup(vr,atb);
+//            vrthread.setDaemon(true);
+//            vrthread.start();
             while(true) {
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
-                        if (map[i][j].size() > 0) {
-                            System.out.print("*" + map[i][j].size());
+                        if (map[i][j]!=null) {
+                            String unitname=map[i][j].getClass().getName().split("\\.")[1];
+                                switch (unitname){
+                                    case "KnightAntibody":
+                                        System.out.print("*");
+                                        break;
+                                    case "KnightVirus":
+                                        System.out.print("(*)");
+                                        break;
+                                    case "MageAntibody":
+                                        System.out.print("#");
+                                        break;
+                                    case "MageVirus":
+                                        System.out.print("(#)");
+                                        break;
+                                    case "SheildAntibody":
+                                        System.out.print("@");
+                                        break;
+                                    default:
+                                        System.out.print("(@)");
+                                }
                         } else {
                             System.out.print("-");
                         }
                     }
                     System.out.println();
                 }
+                System.out.println("\n|\n|\n|\n|");
                 try {
-                    sleep(1000);
+                    sleep(2000);
                     Time++;
                 } catch (InterruptedException e) {
                 }
@@ -93,9 +111,10 @@ public class ImmuneSystem {
         ImmuneSystem IS=new ImmuneSystem(15,7);
          for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                map[i][j]= new ArrayList<Unit>();
+                map[i][j]= null;
             }
         }
         IH.start();
+
     }
 }

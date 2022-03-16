@@ -14,7 +14,7 @@ public class Command implements NodeTree {
     {
         cmd=new ActionCommand(actcom,directionNode,unit);
     }
-    public Command(Variable name, int exp)
+    public Command(Variable name, NodeTree exp)
     {
         cmd=new AssignCommand(name,exp);
     }
@@ -51,16 +51,17 @@ class ActionCommand implements NodeTree{
 }
 class AssignCommand implements NodeTree{
     Variable name;
-    int exp;
+    NodeTree exp;
 
-    public AssignCommand(Variable name, int exp) {
+    public AssignCommand(Variable name, NodeTree exp) {
         this.name=name;
         this.exp=exp;
     }
     @Override
     public int eval() throws EvalError, SyntaxError {
-        Variable.assign(exp);
-        return exp;
+        int expVal= exp.eval();
+        Variable.assign(expVal);
+        return expVal;
     }
 }
 
