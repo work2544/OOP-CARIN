@@ -1,13 +1,15 @@
 import React, { Component ,useState } from 'react'
 import { useDrop } from 'react-dnd'
 import './Cell.css'
-import Host from './Host/Host'
+import { Host } from './Host/Host'
 import axios from 'axios'
 
 const globals = require('../utils/global');
 
 
 export default function Cell({anti,x,y}) {
+
+  const Anti = new Host(null,x,y);
 
   axios.get('http://localhost:3000/' )
     .then(res => {
@@ -17,6 +19,8 @@ export default function Cell({anti,x,y}) {
     .catch(err =>{
       console.error(err)
     })
+  
+  const [click, setClick] = useState(false);
 
   const position = {
     x : x,
@@ -31,16 +35,17 @@ export default function Cell({anti,x,y}) {
   const addAnti = () => {
     if(globals.selectedHero !=null){
       anti = globals.selectedHero;
-      setClick(!click)
+      setClick(true)
     }
     
   }
-  const [click, setClick] = useState(0);
+  
 
   function removeAnti(){
     if(anti != null){
       anti = null;
       globals.selectedHero = null;
+      Anti = null;
 
     }
   }
@@ -52,17 +57,16 @@ export default function Cell({anti,x,y}) {
 
   /* console.log(cellData); */
 
-
-
+{/* <img className='anti-create' src={`image/antivirus/Anti${globals.selectedHero}.png`}></img> */}
   return (
     <div className='Cell' onClick= {addAnti}>
-      {click? (
-                  <img className='anti-create' src={`image/antivirus/Anti${globals.selectedHero}.png`}></img>
+      {click ? (
+                <div className='anti-create'>
+                  <Anti/>
+                </div>
                   ) : (
                   removeAnti()
                   )}
-
-      
     </div>
   )
 }
