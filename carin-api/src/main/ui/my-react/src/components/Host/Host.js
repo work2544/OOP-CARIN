@@ -9,20 +9,20 @@ export default class Host {
             x: x,
             y: y,
             health: 100,
-            redius : 64*2,
             value: null,
-            hitting: false,
-            selectedHero: false,
+            /* redius : 64*2,
+            hitting: false, */
+            /* selectedHero: false, */
         }
 
 
-        if(this.state.id = "knight"){
+        if(this.state.id = "Knight"){
             this.state.value = 100;
             this.state.redius = 64*2;
-        }else if(this.state.id = "mage"){
+        }else if(this.state.id = "Mage"){
             this.state.value = 100;
             this.state.redius = 64*4;
-        }else if(this.state.id = "shield"){
+        }else if(this.state.id = "Shield"){
             this.state.value = 100;
             this.state.redius = 64*1;
         }
