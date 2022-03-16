@@ -1,7 +1,5 @@
 package com.api.carinapi.factories;
 
-import java.util.ArrayList;
-
 import com.api.carinapi.interfaces.Unit;
 public class ImmuneSystem {
     protected static   int m,n;

@@ -3,6 +3,7 @@ package com.api.carinapi.interfaces;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.api.carinapi.factories.Antibody;
 import com.api.carinapi.factories.ImmuneSystem;
 
 public interface Unit extends Runnable{
