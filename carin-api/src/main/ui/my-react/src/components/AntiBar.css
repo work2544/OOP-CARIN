@@ -1,0 +1,36 @@
+#AntiBar{
+    display: block;
+    /* width: 506px;
+    height: 130px; */
+    
+}
+
+#AntiItem:hover{
+    cursor: pointer;
+}
+
+.Pictures {
+    /* margin: 10px; */
+    padding-left: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+img {
+    
+  }
+
+img:hover{
+  cursor: pointer;
+}
+
+
+
+.board {
+  
+    width: 300px;
+    height: 500px;
+    border: 2px solid black;
+  
+}

@@ -1,0 +1,132 @@
+.container {
+   
+    margin: 0 auto;
+}
+
+.navbar {
+    background: #333;
+    height: 80px;
+    /* position:sticky; */
+    top: 0;
+    width: 100%;
+    
+}
+
+.nav-con {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+
+
+
+.logo-container a {
+    /* color: #fff;
+    text-decoration:none;
+    font-weight: bold;
+    font-size: 2rem;
+    
+    font-family: 'Common Pixel', sans-serif; */
+    
+    display: flex;
+    cursor:pointer;
+    background: url("../assets/logo-carin.png");
+    background-size:100%;
+    
+    width: 150px;
+    height:100px;
+    background-position: center;
+    image-rendering: pixelated;
+    
+    
+}
+
+.menu {
+    left: 75%;
+    display:flex;
+    flex-direction: row;
+    list-style: none;   
+}
+
+.menu li {
+    padding-right: 2rem;
+}
+
+.menu li a {
+    text-decoration:none;
+    color: #fff;
+    cursor:pointer;
+    font-family: 'Common Pixel', sans-serif;
+}
+
+.menu li a:hover {
+    
+    color: hsla(0, 0, lightness, .4);
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.menu .active{
+    color: hsla(0, 0, lightness, .4);
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width:480px) {
+    .mobile-menu{
+        display: block;
+        color :#fff;
+        font-size: 2rem;
+        font-family: 'Common Pixel', sans-serif;
+    }
+
+    .navbar {
+        padding: 0 2rem;
+    }
+
+    .menu {
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        top: 64px;
+        left: -100%;
+        transition: 0.5s ease;
+        
+    }
+
+    .menu.active {
+        background: #333;
+        left: 0;
+        opacity: 1;
+        z-index: 1;
+        padding-left: 0;
+        align-content: center;
+        transition: 0.5s ease;
+    }
+    
+
+    .menu li {
+        padding-right: 0 ;
+    }
+    
+    .menu-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vw;
+        padding: 10px 0;
+    }
+
+    
+
+
+
+    
+}
