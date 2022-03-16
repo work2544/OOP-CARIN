@@ -1,6 +1,5 @@
 package com.api.carinapi.factories;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,13 +7,14 @@ import com.api.carinapi.interfaces.Unit;
 import com.api.carinapi.statements.ErrorPack.EvalError;
 import com.api.carinapi.statements.ErrorPack.SyntaxError;
 import com.api.carinapi.statements.GlobalFile.NodeTree;
-
+import com.api.carinapi.utils.ReadGenetic;
+import com.api.carinapi.utils.*;
 import static java.lang.Thread.sleep;
 
 public class AntibodyFactory implements Runnable {
     int hp,atk,gain,movecost,placecost;
     int livedAnti=0;
-    protected ArrayList<Unit>[][] map= ImmuneSystem.getmap();
+    protected Unit[][] map= ImmuneSystem.getmap();
 
     public AntibodyFactory(int hp, int atk, int gain,int movecost, int placecost) {
         this.hp = hp;
@@ -24,20 +24,21 @@ public class AntibodyFactory implements Runnable {
         this.placecost = placecost;
     }
     public void AntibodySetup(){
-        map[0][0].add(CreatAntibody("melee",0,0));
-        map[1][0].add(CreatAntibody("tank",1,0));
-        map[2][0].add(CreatAntibody("range",2,0));
+        map[0][0]=CreatAntibody("knight",0,0);
+        map[1][0]=CreatAntibody("shield",0,1);
+        map[2][0]=CreatAntibody("mage",0,1);
         livedAnti+=3;
     }
     public Antibody CreatAntibody(String type,int posx,int posy) {
         Antibody antibody = null;
-        if (type.equals("melee")) {
-            antibody = new MeleeAntibody(hp, atk, gain,posx,posy);
-        } else if (type.equals("tank")) {
-            antibody = new TankAntibody(hp, atk, gain,posx,posy);
-        } else if (type.equals("range")) {
-            antibody = new RangeAntibody(hp, atk, gain,posx,posy);
+        if (type.equals("knight")) {
+            antibody = new KnightAntibody(hp, atk, gain,posx,posy);
+        } else if (type.equals("shield")) {
+            antibody = new ShieldAntibody(hp, atk, gain,posx,posy);
+        } else if (type.equals("mage")) {
+            antibody = new MageAntibody(hp, atk, gain,posx,posy);
         }
+        map[posy][posx]=antibody;
         return antibody;
     }
 
@@ -46,23 +47,23 @@ public class AntibodyFactory implements Runnable {
 
     }
 }
-class MeleeAntibody extends Antibody {
+class KnightAntibody extends Antibody {
 
-    public MeleeAntibody(int hp,  int atk, int gain, int posx, int posy) {
+    public KnightAntibody(int hp,  int atk, int gain, int posx, int posy) {
         super(hp,  atk, gain, posx, posy);
     }
 
 }
-class TankAntibody extends Antibody {
+class ShieldAntibody extends Antibody {
 
-    public TankAntibody(int hp,  int atk, int gain, int posx, int posy) {
+    public ShieldAntibody(int hp,  int atk, int gain, int posx, int posy) {
         super(hp, atk, gain, posx, posy);
     }
 
 }
-class RangeAntibody extends Antibody {
+class MageAntibody extends Antibody {
 
-    public RangeAntibody(int hp,  int atk, int gain, int posx, int posy) {
+    public MageAntibody(int hp,  int atk, int gain, int posx, int posy) {
         super(hp, atk, gain, posx, posy);
     }
 
@@ -78,19 +79,26 @@ class Antibody implements Unit{
         this.gain = gain;
         this.posx=posx;
         this.posy=posy;
-
+        try {
+            this.nt= new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/AntibodyGene"),unitvar,this).parseProgram();
+        }
+        catch (SyntaxError | EvalError e){
+            System.out.println("cannot parse gene");
+        }
     }
     @Override
     public void attack(String Direction) {
-        ArrayList<Unit>[][] map=ImmuneSystem.getmap();
+        Unit[][] map=ImmuneSystem.getmap();
         int[] answer=minDistanc(Direction,1);
-        for (Unit unit :map[answer[1]][answer[0]]
-        ) {
-            if(unit.getClass().getName().equals("Virus"))
-            {
-                unit.getattack(this);
-                this.hp+=gain();
-                if(unit.hp()<=0)map[answer[1]][answer[0]].remove(unit);
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                if(map[i][j]!=null)
+                if(map[i][j].getClass().getName().equals("Virus"))
+                {
+                    map[i][j].getattack(this);
+                    this.hp+=gain();
+                    if(map[i][j].hp()<=0)map[answer[1]][answer[0]]=null;
+                }
             }
         }
     }
@@ -112,7 +120,7 @@ class Antibody implements Unit{
 
     @Override
     public void move(String Direction) {
-        ArrayList<Unit>[][] map=ImmuneSystem.getmap();
+        Unit[][] map=ImmuneSystem.getmap();
         int[] answer=minDistanc(Direction,1);
         if(answer[0]<map[0].length&&answer[1]<map.length&&answer[0]>-1&&answer[1]>-1)
         {  posx+=answer[0];
@@ -141,11 +149,7 @@ class Antibody implements Unit{
         try {
             nt.eval();
             sleep(1000);
-        } catch (EvalError e) {
-            e.printStackTrace();
-        } catch (SyntaxError e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (EvalError | SyntaxError | InterruptedException e) {
             e.printStackTrace();
         }
     }
