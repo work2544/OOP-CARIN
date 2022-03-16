@@ -5,8 +5,7 @@ import java.util.Arrays;
 
 import com.api.carinapi.factories.ImmuneSystem;
 
-public interface Unit{
-   
+public interface Unit extends Runnable{
     int hp();
     int atk();
     int posx();
