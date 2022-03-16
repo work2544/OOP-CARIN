@@ -1,6 +1,5 @@
 package ProgramAST.Statement.GlobalFile;
 
-import java.util.Map;
 import java.util.Random;
 
 public class RandomVariable extends Variable{

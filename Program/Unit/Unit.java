@@ -1,12 +1,12 @@
 package Unit;
 
 import ImmuneSystemPack.ImmuneSystem;
+import ProgramAST.Statement.GlobalFile.NodeTree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public interface Unit{
-   
+public interface Unit extends Runnable{
     int hp();
     int atk();
     int posx();

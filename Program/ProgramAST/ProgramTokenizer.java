@@ -28,7 +28,7 @@ public class ProgramTokenizer implements Tokenizer {
                     for (pos++; pos < src.length() && (Character.isLetter(src.charAt(pos))||Character.isDigit(src.charAt(pos))); pos++)
                         s.append(src.charAt(pos));
                     break;
-                } else if (c == '(' || c == ')'||c=='<'||c=='>' ||c == '+' ||  c == '-' || c == '*' || c == '/' || c == '%'||c=='^'||c=='=') {
+                } else if (c == '(' || c == ')'||c=='<'||c=='>' ||c == '+' ||  c == '-' || c == '*' || c == '/' || c == '%'||c=='^'||c=='='||c=='{'||c=='}'||c=='\n') {
                     pos++;
                     break;
                 } else if (c == ' ')  // ignore whitespace

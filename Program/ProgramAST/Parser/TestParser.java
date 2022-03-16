@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ExpParser {
+public class TestParser {
     public static void main(String[] args) throws SyntaxError, EvalError {
         Parser exp;
         Unit x= new AntibodyFactory(1,1,1,1,1).CreatAntibody("melee",0,0);
