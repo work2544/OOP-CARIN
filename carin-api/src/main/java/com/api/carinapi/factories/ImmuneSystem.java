@@ -1,9 +1,9 @@
-package com.api.carinapi.factories
-;
+package ImmuneSystemPack;
+import ProgramAST.Statement.GlobalFile.NodeTree;
+import Unit.*;
+import org.w3c.dom.Node;
+
 import java.util.ArrayList;
-
-import com.api.carinapi.interfaces.Unit;
-
 public class ImmuneSystem {
     protected static   int m,n;
     protected static int Time;
@@ -73,7 +73,8 @@ public class ImmuneSystem {
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
                         if (map[i][j].size() > 0) {
-                            System.out.print("*" + map[i][j].size());
+                            if(map[i][j].get(0)!=null)
+                                System.out.print(map[i][j].get(0).getClass().getName());
                         } else {
                             System.out.print("-");
                         }
@@ -86,12 +87,12 @@ public class ImmuneSystem {
                 } catch (InterruptedException e) {
                 }
             }
-            }
+        }
     }
     public static void main(String[] args) throws InterruptedException {
         ImmuneHandle IH=new ImmuneHandle(500,100,15,2,100,10,5,200,2,50);
         ImmuneSystem IS=new ImmuneSystem(15,7);
-         for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 map[i][j]= new ArrayList<Unit>();
             }
