@@ -80,12 +80,7 @@ class Antibody implements Unit{
         this.gain = gain;
         this.posx=posx;
         this.posy=posy;
-//        try {
-//            this.nt= (NodeTree) new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/AntibodyGene"),unitvar,this);
-//        }
-//        catch (SyntaxError e){
-//            System.out.println("cannot parse gene");
-//        }
+
     }
     @Override
     public void attack(String Direction) {
