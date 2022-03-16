@@ -19,12 +19,12 @@ const ItemList = [
   {
     id: 'Shield',
     url: 'image/btn/RebannerAntiShield.png',
-    value : 150,
+    value : 100,
   },
   {
     id: 'Mage',
     url: 'image/btn/RebannerAntiMage.png',
-    value : 200,
+    value : 100,
   },
   
 ]

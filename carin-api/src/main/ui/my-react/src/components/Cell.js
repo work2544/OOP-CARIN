@@ -11,31 +11,33 @@ export default function Cell({anti,x,y}) {
 
   axios.get('http://localhost:3000/' )
     .then(res => {
-      console.log("Cell Data: ", cellData)
+      console.log("Cell Data " + "[" + x + "]" +  "[" + y + "]", cellData)
       
     })
     .catch(err =>{
       console.error(err)
     })
 
+  const Antivirus = new Host(null,x,y);
+  
   const position = {
     x : x,
     y : y,
   }
   
   const cellData = {
-    anti : globals.selectedHero,
+    anti : Antivirus.state,
     position,
   }
 
   const addAnti = () => {
     if(globals.selectedHero !=null){
-      anti = globals.selectedHero;
-      setClick(!click)
+      Antivirus.state.id = globals.selectedHero;
+      setClick(true)
     }
     
   }
-  const [click, setClick] = useState(0);
+  const [click, setClick] = useState(false);
 
   function removeAnti(){
     if(anti != null){
@@ -57,7 +59,10 @@ export default function Cell({anti,x,y}) {
   return (
     <div className='Cell' onClick= {addAnti}>
       {click? (
+                <div>
                   <img className='anti-create' src={`image/antivirus/Anti${globals.selectedHero}.png`}></img>
+                  
+                </div>
                   ) : (
                   removeAnti()
                   )}
