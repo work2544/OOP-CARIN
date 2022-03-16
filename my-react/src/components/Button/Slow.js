@@ -18,19 +18,9 @@ export default function Slow() {
 
     const [click, setClick] = useState(window.isSlow);
     const handleClick = () => setClick(!click);
-<<<<<<< HEAD
     
 
     
-=======
-    console.log(click);
-
-    if(!click){
-      console.log("NotSlow");
-    }else{
-      console.log("Slow");
-    }
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 
 
   return (

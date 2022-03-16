@@ -2,18 +2,13 @@ import React, { Component ,useState } from 'react'
 import { useDrop } from 'react-dnd'
 import './Cell.css'
 import Host from './Host/Host'
-<<<<<<< HEAD
 import axios from 'axios'
 
 const globals = require('../utils/global');
-=======
-
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 
 
 export default function Cell({anti,x,y}) {
 
-<<<<<<< HEAD
   axios.get('http://localhost:3000/' )
     .then(res => {
       console.log("Cell Data: ", cellData)
@@ -22,9 +17,6 @@ export default function Cell({anti,x,y}) {
     .catch(err =>{
       console.error(err)
     })
-=======
-export default function Cell({anti,x,y}) {
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 
   const position = {
     x : x,
@@ -32,7 +24,6 @@ export default function Cell({anti,x,y}) {
   }
   
   const cellData = {
-<<<<<<< HEAD
     anti : globals.selectedHero,
     position,
   }
@@ -53,23 +44,6 @@ export default function Cell({anti,x,y}) {
 
     }
   }
-=======
-    anti : anti,
-    position,
-  }
-
-  
-
-  console.log(cellData);
-
-
-
-  return (
-    <div className='Cell'></div>
-  )
-}
-
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 
   
   

@@ -18,11 +18,8 @@ export default function Board() {
       }
   }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
   return ( 
     
     <div className='bg'>

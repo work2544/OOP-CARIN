@@ -26,34 +26,23 @@ import VirusCount from '../components/VirusCount/VirusCount';
 
 export default function Carin_heart(props) {
 
-<<<<<<< HEAD
   const globals = require ("../utils/global.js")
-=======
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
   const heart = () => {
     axios.get("http://localhost:3001/heart").then(res => {
       console.log(res.data)
     })
   }
 
-<<<<<<< HEAD
  
   
-=======
-  let health = 100;
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
   const [percentRange, setProgress] = useState(0);
   const [buttonPopup, setButtonPausePop] = useState(false);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   console.log(click);
 
-<<<<<<< HEAD
   
   
-=======
-  window.heartHealth = 100;
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
 
 
     return  (
@@ -87,11 +76,7 @@ export default function Carin_heart(props) {
                   <button className='mu'><Menu/></button>
                 </div>
                 <div className='healthbar' >
-<<<<<<< HEAD
                   <HealthBar type={"heart"} helth={globals.healthHeart} />
-=======
-                  <HealthBar type = "heart" health={window.heartHealth} />
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
                   {/* <ProgressBarContainer percent={health} ></ProgressBarContainer> */}
                 </div>
               </li> 

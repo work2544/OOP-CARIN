@@ -12,16 +12,11 @@ import axios from 'axios';
 
 const ItemList = [
   {
-<<<<<<< HEAD
     id: 'Knight',
-=======
-    id: 'knight',
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
     url: "image/btn/RebannerAntiKnight.png",
     value : 100,
   },
   {
-<<<<<<< HEAD
     id: 'Shield',
     url: 'image/btn/RebannerAntiShield.png',
     value : 150,
@@ -29,15 +24,6 @@ const ItemList = [
   {
     id: 'Mage',
     url: 'image/btn/RebannerAntiMage.png',
-=======
-    id: 'mage',
-    url: 'image/btn/RebannerAntiMage.png',
-    value : 150,
-  },
-  {
-    id: 'shield',
-    url: 'image/btn/RebannerAntiShield.png',
->>>>>>> 231589286dfbe68e989d7ddc36434f9f0694b0d8
     value : 200,
   },
   
