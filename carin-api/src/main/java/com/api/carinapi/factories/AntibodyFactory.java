@@ -1,8 +1,17 @@
 package com.api.carinapi.factories;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.api.carinapi.interfaces.Unit;
+import com.api.carinapi.statements.ErrorPack.EvalError;
+import com.api.carinapi.statements.ErrorPack.SyntaxError;
+import com.api.carinapi.statements.GlobalFile.NodeTree;
+import com.api.carinapi.utils.Parser;
+import com.api.carinapi.utils.ReadGenetic;
+
+import static java.lang.Thread.sleep;
 
 public class AntibodyFactory implements Runnable {
     int hp,atk,gain,movecost,placecost;
@@ -63,13 +72,20 @@ class RangeAntibody extends Antibody {
 class Antibody implements Unit{
     int hp, atk,gain;
     int posx, posy;
-
+    NodeTree nt;
+    Map<String,Integer> unitvar=new HashMap<>();
     public Antibody(int hp, int atk, int gain,int posx,int posy) {
         this.hp = hp;
         this.atk = atk;
         this.gain = gain;
         this.posx=posx;
         this.posy=posy;
+        try {
+            this.nt= (NodeTree) new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/AntibodyGene"),unitvar,this);
+        }
+        catch (SyntaxError e){
+            System.out.println("cannot parse gene");
+        }
     }
     @Override
     public void attack(String Direction) {
@@ -127,5 +143,17 @@ class Antibody implements Unit{
     }
 
 
-
+    @Override
+    public void run() {
+        try {
+            nt.eval();
+            sleep(1000);
+        } catch (EvalError e) {
+            e.printStackTrace();
+        } catch (SyntaxError e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

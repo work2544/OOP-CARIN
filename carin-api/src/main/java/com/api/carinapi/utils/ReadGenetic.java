@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 public class ReadGenetic {
     public static String GetGenetic(String filepath)
-    {
+             {
         Path file = Paths.get(filepath);
         StringBuilder s=new StringBuilder();
         Charset charset = StandardCharsets.US_ASCII;
