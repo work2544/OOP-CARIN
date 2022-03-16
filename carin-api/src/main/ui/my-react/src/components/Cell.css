@@ -33,3 +33,12 @@
     height: 64px;
     
 }
+
+.anti-create {
+    
+    
+}
+.Cell .anti-create:hover{
+   /*  background-color: antiquewhite;
+    border-radius: 50%; */
+}
