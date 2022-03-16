@@ -4,21 +4,27 @@ import React, { Component } from 'react'
 
 export default class Host {
     constructor(anti,x, y) {
-        this.id = anti;
-        this.x = x;
-        this.y = y;
-        this.health = 100;
-        this.value = 0;
-        this.hitting = false;   
-        this.hitNow = false;
-        this.selectedHero = false;
+        this.state = {
+            id: anti,
+            x: x,
+            y: y,
+            health: 100,
+            redius : 64*2,
+            value: null,
+            hitting: false,
+            selectedHero: false,
+        }
 
-        if(this.id = "knight"){
-            this.value = 100;
-        }else if(this.id = "mage"){
-            this.value = 150;
-        }else if(this.id = "shield"){
-            this.value = 200;
+
+        if(this.state.id = "knight"){
+            this.state.value = 100;
+            this.state.redius = 64*2;
+        }else if(this.state.id = "mage"){
+            this.state.value = 100;
+            this.state.redius = 64*4;
+        }else if(this.state.id = "shield"){
+            this.state.value = 100;
+            this.state.redius = 64*1;
         }
 
 
@@ -34,7 +40,7 @@ export default class Host {
         return (
         <div id='host'>
             <div className='host'>
-                <img className='anti-seclect' src={(`/image/antivirus/Anti${this.id}.png`)}></img>
+                {/* <img src={(`/image/antivirus/Anti${this.id}.png`)}></img> */}
             </div>
         </div>
         )
