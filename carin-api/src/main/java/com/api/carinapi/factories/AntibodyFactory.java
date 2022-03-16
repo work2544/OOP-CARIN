@@ -1,15 +1,15 @@
-package com.api.carinapi.factories;
+package Unit;
+
+import ImmuneSystemPack.ImmuneSystem;
+import ProgramAST.Parser.Parser;
+import ProgramAST.Parser.ReadGenetic;
+import ProgramAST.Statement.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
+import ProgramAST.Statement.GlobalFile.NodeTree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.api.carinapi.interfaces.Unit;
-import com.api.carinapi.statements.ErrorPack.EvalError;
-import com.api.carinapi.statements.ErrorPack.SyntaxError;
-import com.api.carinapi.statements.GlobalFile.NodeTree;
-import com.api.carinapi.utils.Parser;
-import com.api.carinapi.utils.ReadGenetic;
 
 import static java.lang.Thread.sleep;
 
@@ -37,7 +37,7 @@ public class AntibodyFactory implements Runnable {
             antibody = new MeleeAntibody(hp, atk, gain,posx,posy);
         } else if (type.equals("tank")) {
             antibody = new TankAntibody(hp, atk, gain,posx,posy);
-        } else if (type.equals("archer")) {
+        } else if (type.equals("range")) {
             antibody = new RangeAntibody(hp, atk, gain,posx,posy);
         }
         return antibody;
@@ -67,7 +67,7 @@ class RangeAntibody extends Antibody {
     public RangeAntibody(int hp,  int atk, int gain, int posx, int posy) {
         super(hp, atk, gain, posx, posy);
     }
-    
+
 }
 class Antibody implements Unit{
     int hp, atk,gain;
@@ -80,12 +80,7 @@ class Antibody implements Unit{
         this.gain = gain;
         this.posx=posx;
         this.posy=posy;
-        try {
-            this.nt= (NodeTree) new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/AntibodyGene"),unitvar,this);
-        }
-        catch (SyntaxError e){
-            System.out.println("cannot parse gene");
-        }
+
     }
     @Override
     public void attack(String Direction) {

@@ -33,22 +33,20 @@ export default function AntiItem({ id, url ,value }) {
     globals.selectedHero = id;
     console.log("selected Anti : " + globals.selectedHero)
     console.log(globals.currentCoint)
-    }else{
-      globals.selectedHero = null;
     }
   }
 
   return (
   
     <>
-    <DragPreviewImage connect={preview} src={`image/antivirus/Anti${id}.png`} />
+    {/* <DragPreviewImage connect={preview} src={`image/antivirus/Anti${id}.png`} /> */}
     <div className='item'>
       
       <img onClick={selectAnti}
-      ref={drag}
+      /* ref={drag} */
       src={url}
       width="150px"
-      style={{ border: isDragging ? "5px solid pink" : "0px" }}>
+      /* style={{ border: isDragging ? "5px solid pink" : "0px" }} */>
       </img>
       <div className='value'>{value}</div>
     </div>

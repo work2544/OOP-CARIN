@@ -1,16 +1,17 @@
-package com.api.carinapi.factories;
+package Unit;
+
+import ImmuneSystemPack.ImmuneSystem;
+import ProgramAST.Parser.Parser;
+import ProgramAST.Parser.ReadGenetic;
+import ProgramAST.Statement.ErrorPack.EvalError;
+import ProgramAST.Statement.ErrorPack.SyntaxError;
+import ProgramAST.Statement.GlobalFile.NodeTree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
+import java.util.Map;
 
-import com.api.carinapi.interfaces.Unit;
-import com.api.carinapi.statements.ErrorPack.EvalError;
-import com.api.carinapi.statements.ErrorPack.SyntaxError;
-import com.api.carinapi.statements.GlobalFile.NodeTree;
-import com.api.carinapi.utils.Parser;
-import com.api.carinapi.utils.ReadGenetic;
 
 import static java.lang.Thread.sleep;
 
@@ -18,29 +19,29 @@ public class VirusFactory implements Runnable {
     private  int hp, atk,gain;
     private Random rd=new Random();
     protected ArrayList<Unit>[][] map=ImmuneSystem.getmap();
-    private double spwanrate=rd.nextDouble(0,1);
+    private double spwanrate=rd.nextDouble(0.5,1);
     private int availVirus=20;
     private int liveVirus=0;
     public VirusFactory(int hp, int atk, int gain){
-    this.hp=hp;
-    this.atk=atk;
-    this.gain=gain;
+        this.hp=hp;
+        this.atk=atk;
+        this.gain=gain;
     }
     public Virus CreatVirus(String type,int posx,int posy) {
         Virus virus = null;
         if (type.equals("melee")) {
-            virus = new Virus(hp, atk, gain,posx,posy);
+            virus = new MeleeVirus(hp, atk, gain,posx,posy);
         } else if (type.equals("tank")) {
-            virus = new Virus(hp, atk, gain,posx,posy);
-        } else if (type.equals("archer")) {
-            virus = new Virus(hp, atk, gain,posx,posy);
+            virus = new TankVirus(hp, atk, gain,posx,posy);
+        } else if (type.equals("range")) {
+            virus = new RangeVirus(hp, atk, gain,posx,posy);
         }
         return virus;
     }
     public void Vsetup(){
-        map[0][7].add(CreatVirus("melee",0,7));
-        map[1][7].add(CreatVirus("tank",1,7));
-        map[2][7].add(CreatVirus("range",2,7));
+        map[0][map[0].length-1].add(CreatVirus("melee",0,14));
+        map[1][map[0].length-1].add(CreatVirus("tank",1,14));
+        map[2][map[0].length-1].add(CreatVirus("range",2,14));
         availVirus-=3;
         liveVirus+=3;
     }
@@ -49,18 +50,20 @@ public class VirusFactory implements Runnable {
         int spwanpos;
         int typerd;
         while(availVirus>0){
+            System.out.println("creating");
+            spwanpos= rd.nextInt(0,map.length);
+            System.out.println(spwanpos+" "+1000/spwanrate);
+            typerd= rd.nextInt(0,3);
             try {
-                spwanpos= rd.nextInt(0,5);
-                typerd= rd.nextInt(0,3);
-                while(map[spwanpos][7].size()>0)spwanpos= rd.nextInt(0,5);
+                while(map[spwanpos][map[0].length-1].size()>0)spwanpos= rd.nextInt(0, map.length);
                 switch (typerd){
                     case 0:
-                        map[spwanpos][7].add(CreatVirus("melee",spwanpos,7));
+                        map[spwanpos][map[0].length-1].add(CreatVirus("melee",spwanpos,map[0].length-1));
                         break;
                     case 1:
-                        map[spwanpos][7].add(CreatVirus("tank",spwanpos,7));
+                        map[spwanpos][map[0].length-1].add(CreatVirus("tank",spwanpos,map[0].length-1));
                         break;
-                    default: map[spwanpos][7].add(CreatVirus("range",spwanpos,7));
+                    default: map[spwanpos][map[0].length-1].add(CreatVirus("range",spwanpos,map[0].length-1));
                 }
                 availVirus--;
                 liveVirus++;
@@ -70,6 +73,27 @@ public class VirusFactory implements Runnable {
             }
         }
     }
+}
+class MeleeVirus extends Virus {
+
+    public MeleeVirus(int hp,  int atk, int gain, int posx, int posy) {
+        super(hp,  atk, gain, posx, posy);
+    }
+
+}
+class TankVirus extends Virus {
+
+    public TankVirus(int hp,  int atk, int gain, int posx, int posy) {
+        super(hp, atk, gain, posx, posy);
+    }
+
+}
+class RangeVirus extends Virus {
+
+    public RangeVirus(int hp,  int atk, int gain, int posx, int posy) {
+        super(hp, atk, gain, posx, posy);
+    }
+
 }
 class Virus implements Unit {
     int hp, atk,gain;
@@ -83,9 +107,9 @@ class Virus implements Unit {
         this.posx=posx;
         this.posy=posy;
         try {
-            this.nt= (NodeTree) new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/VirusGene"),unitvar,this);
+            this.nt=new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/VirusGene"),unitvar,this).parseProgram();
         }
-        catch (SyntaxError e){
+        catch (SyntaxError | EvalError e){
             System.out.println("cannot parse gene");
         }
 
@@ -95,7 +119,7 @@ class Virus implements Unit {
         ArrayList<Unit>[][] map=ImmuneSystem.getmap();
         int[] answer=minDistanc(Direction,1);
         for (Unit unit :map[answer[1]][answer[0]]
-             ) {
+        ) {
             if(unit.getClass().getName().equals("Antibody"))
             {
                 unit.getattack(this);
@@ -114,9 +138,9 @@ class Virus implements Unit {
     public void move(String Direction) {
         ArrayList<Unit>[][] map=ImmuneSystem.getmap();
         int[] answer=minDistanc(Direction,1);
-       if(answer[0]<map[0].length&&answer[1]<map.length&&answer[0]>-1&&answer[1]>-1)
-       {  posx+=answer[0];
-        posy+=answer[1];}
+        if(answer[0]<map[0].length&&answer[1]<map.length&&answer[0]>-1&&answer[1]>-1)
+        {  posx+=answer[0];
+            posy+=answer[1];}
     }
 //    @Override
 //    public int nearby(String direction) {
