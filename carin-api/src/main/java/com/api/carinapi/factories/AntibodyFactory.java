@@ -16,10 +16,18 @@ public class AntibodyFactory implements Runnable {
         this.placecost = placecost;
     }
     public void AntibodySetup(){
-        map[0][0]=CreatAntibody("knight",0,0);
-        map[1][0]=CreatAntibody("shield",0,1);
-        map[2][0]=CreatAntibody("mage",0,1);
-        livedAnti+=3;
+        Antibody atb1=CreatAntibody("knight",0,0);
+        Antibody atb2=CreatAntibody("shield",0,1);
+        Antibody atb3=CreatAntibody("mage",0,2);
+        map[0][0]=atb1;
+        map[1][0]=atb2;
+        map[2][0]=atb3;
+        atb1.setDaemon(true);
+        atb2.setDaemon(true);
+        atb3.setDaemon(true);
+        atb1.start();
+        atb2.start();
+        atb3.start();
     }
     public Antibody CreatAntibody(String type,int posx,int posy) {
         Antibody antibody = null;

@@ -16,9 +16,9 @@ public class VirusFactory implements Runnable {
     private static int availVirus=20;
     public static int liveVirus=0;
     public VirusFactory(int hp, int atk, int gain){
-    this.hp=hp;
-    this.atk=atk;
-    this.gain=gain;
+    VirusFactory.hp =hp;
+    VirusFactory.atk =atk;
+    VirusFactory.gain =gain;
     }
     public static Virus CreatVirus(String type,int posx,int posy) {
         Virus virus = null;
@@ -35,20 +35,18 @@ public class VirusFactory implements Runnable {
         return virus;
     }
     public void Vsetup(){
-        Unit vr1=CreatVirus("knight",14,0);
-        Unit vr2=CreatVirus("shield",14,0);
-        Unit vr3=CreatVirus("mage",14,0);
+        Virus vr1=CreatVirus("knight",14,0);
+        Virus vr2=CreatVirus("shield",14,1);
+        Virus vr3=CreatVirus("mage",14,2);
         map[0][map[0].length-1]=vr1;
         map[1][map[0].length-1]=vr2;
         map[2][map[0].length-1]=vr3;
-        Thread vr1thread=new Thread(vr1);
-        Thread vr2thread=new Thread(vr2);
-        Thread vr3thread=new Thread(vr3);
-        vr1thread.start();
-        vr2thread.start();
-        vr3thread.start();
-        availVirus-=3;
-        liveVirus+=3;
+        vr1.setDaemon(true);
+        vr2.setDaemon(true);
+        vr3.setDaemon(true);
+        vr1.start();
+        vr2.start();
+        vr3.start();
     }
     @Override
     public void run() {
@@ -57,7 +55,7 @@ public class VirusFactory implements Runnable {
         while(availVirus>0){
             spwanpos= rd.nextInt(0,map.length);
             typerd= rd.nextInt(0,3);
-            Unit vr;
+            Virus vr;
             try {
                 while(map[map.length-1][spwanpos]!=null)spwanpos= rd.nextInt(0, map.length);
                 switch (typerd){
@@ -70,10 +68,8 @@ public class VirusFactory implements Runnable {
                     default: vr=CreatVirus("mage",map[0].length-1,spwanpos);
                 }
                 map[spwanpos][map[0].length-1]=vr;
-                Thread vrthread=new Thread(vr);
-                vrthread.start();
-                availVirus--;
-                liveVirus++;
+                vr.setDaemon(true);
+                vr.start();
                 sleep((long) (1000/spwanrate));
             } catch (InterruptedException e) {
                 e.printStackTrace();

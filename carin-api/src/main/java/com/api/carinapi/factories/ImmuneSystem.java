@@ -116,17 +116,17 @@ public class ImmuneSystem {
             atbthread.interrupt();
             }
     }
-    // public static void main(String[] args) throws InterruptedException {
-    //     ImmuneHandle IH = new ImmuneHandle(500, 100, 15, 2, 100, 10, 5, 200, 2, 50);
-    //     ImmuneSystem IS = new ImmuneSystem(15, 7);
-    //     for (int i = 0; i < n; i++) {
-    //         for (int j = 0; j < m; j++) {
-    //             map[i][j] = null;
-    //         }
-    //     }
-    //     Thread ihthread=new Thread(IH);
-    //     ihthread.start();
+    public static void main(String[] args) throws InterruptedException {
+        ImmuneHandle IH = new ImmuneHandle(500, 100, 15, 2, 100, 10, 5, 200, 2, 50);
+        ImmuneSystem IS = new ImmuneSystem(15, 7);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                map[i][j] = null;
+            }
+        }
+        Thread ihthread=new Thread(IH);
+        ihthread.start();
 
 
-    // }
+    }
 }

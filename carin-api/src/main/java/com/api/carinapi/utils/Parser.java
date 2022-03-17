@@ -189,8 +189,7 @@ public class Parser extends StatmentFac {
                 if(x.equals("random")){
                     {
                         RandomVariable tempvar=new RandomVariable();
-                    new Variable(x,unitvar);
-                    Variable.assign(tempvar.evaluate());
+                    new Variable(x,unitvar).assign(tempvar.evaluate());
                      return creatAssignStatement(tempvar);
                     }
             }

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.api.carinapi.statements.ErrorPack.EvalError;
 
-
 public class Variable implements NodeTree {
 
     static String identifier;
