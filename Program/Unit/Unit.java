@@ -95,10 +95,14 @@ public interface Unit extends Runnable{
         Unit[][] map=ImmuneSystem.getmap();
         //หา 8 ทิศ แล้วหามิน
         int[] neardist=new int[8];
+        if(VirusFactory.liveVirus==0)return 0;
+        for (int i = 0; i < 8; i++) {
+            neardist[i]=Integer.MAX_VALUE;
+        }
         //up
         for (int i=posy()-1;i>=0;i--){
             if(map[i][posx()]!=null) {
-                if(map[i][posx()].getClass().getName().split("\\.")[0].equals("Virus")){
+                if(map[i][posx()] instanceof Virus){
                     neardist[0]=(posy()-i)*10+1;
                     break;
                 }
@@ -107,7 +111,7 @@ public interface Unit extends Runnable{
         //down
         for (int i=posy()+1;i< map.length;i++){
             if(map[i][posx()]!=null) {
-                if(map[i][posx()].getClass().getName().split("\\.")[0].equals("Virus")){
+                if(map[i][posx()] instanceof Virus){
                     neardist[1]=(i-posy())*10+5;
                     break;
                 }
@@ -117,7 +121,7 @@ public interface Unit extends Runnable{
         for (int i=posx()-1;i>=0;i--){
             if(map[posy()][i]!=null
             ) {
-                if(map[posy()][i].getClass().getName().split("\\.")[0].equals("Virus")){
+                if(map[posy()][i] instanceof Virus){
                     neardist[2]=(posx()-i)*10+7;
                     break;
                 }
@@ -127,7 +131,7 @@ public interface Unit extends Runnable{
         for (int i=posx()+1;i<map[0].length;i++){
             if(map[posy()][i]!=null
             ) {
-                if(map[posy()][i].getClass().getName().split("\\.")[0].equals("Virus")){
+                if(map[posy()][i] instanceof Virus){
                     neardist[3]=(i-posx())*10+3;
                     break;
                 }
@@ -138,7 +142,7 @@ public interface Unit extends Runnable{
             for (int j=posx()-1;j>0;j--){ //left
                 if(map[i][j]!=null
                 ) {
-                    if(map[i][j].getClass().getName().split("\\.")[0].equals("Virus")){
+                    if(map[i][j] instanceof Virus){
                         neardist[4]=(posx()-j)*10+8;
                         break;
                     }
@@ -152,7 +156,7 @@ public interface Unit extends Runnable{
             for (int j=posx()+1;j<map[0].length;j++){ //right
                 if(map[i][j]!=null
                 ) {
-                    if(map[i][j].getClass().getName().split("\\.")[0].equals("Virus")){
+                    if(map[i][j] instanceof Virus){
                         neardist[5]=(j-posx())*10+2;
                         break;
                     }
@@ -167,7 +171,7 @@ public interface Unit extends Runnable{
             for (int j=posx()+1;j>=0;j--) { //left
                 if(map[i][j]!=null
                 ) {
-                    if(map[i][j].getClass().getName().split("\\.")[0].equals("Virus")){
+                    if(map[i][j] instanceof Virus){
                         neardist[6]=(posx()-j) * 10 + 6;
                         break;
                     }
@@ -182,7 +186,7 @@ public interface Unit extends Runnable{
             for (int j=posx()+1;j<map[0].length;j++) { //right
                 if(map[i][j]!=null
                 ) {
-                    if(map[i][j].getClass().getName().split("\\.")[0].equals("Virus")){
+                    if(map[i][j] instanceof Virus){
                         neardist[7]=(posx()-j) * 10 + 4;
                         break;
                     }
@@ -196,8 +200,12 @@ public interface Unit extends Runnable{
     }
     default int nearantibody(){
         Unit[][] map=ImmuneSystem.getmap();
+        if(AntibodyFactory.livedAnti==0)return 0;
         //หา 8 ทิศ แล้วหามิน
         int[] neardist=new int[8];
+        for (int i = 0; i < 8; i++) {
+            neardist[i]=Integer.MAX_VALUE;
+        }
         //up
         for (int i=posy()-1;i>=0;i--){
             if(map[i][posx()]!=null
@@ -220,7 +228,6 @@ public interface Unit extends Runnable{
         }
         //left
         for (int i=posx()-1;i>=0;i--){
-            System.out.println(map[posy()][i]);
             if(map[posy()][i]!=null) {
                 if(map[posy()][i] instanceof Antibody){
                     neardist[2]=(posx()-i)*10+7;

@@ -23,9 +23,9 @@ public class IfState implements NodeTree {
     @Override
     public int eval() throws SyntaxError, EvalError {
        if(ifexp.eval()>0)
-           thenstate.eval();
+           return    thenstate.eval();
        else if(elsestate!=null)
-           elsestate.eval();
+       return   elsestate.eval();
         return 0;
     }
 }

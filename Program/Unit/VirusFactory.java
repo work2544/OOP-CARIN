@@ -1,31 +1,23 @@
 package Unit;
 
 import ImmuneSystemPack.ImmuneSystem;
-import ProgramAST.Parser.Parser;
-import ProgramAST.Parser.ReadGenetic;
-import ProgramAST.Statement.ErrorPack.EvalError;
-import ProgramAST.Statement.ErrorPack.SyntaxError;
-import ProgramAST.Statement.GlobalFile.NodeTree;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
 public class VirusFactory implements Runnable {
-    private  int hp, atk,gain;
+    private static int hp, atk,gain;
     private Random rd=new Random();
-    protected Unit[][] map=ImmuneSystem.getmap();
+    protected static Unit[][] map=ImmuneSystem.getmap();
     private double spwanrate=rd.nextDouble(0.5,1);
-    private int availVirus=20;
-    private int liveVirus=0;
+    private static int availVirus=20;
+    public static int liveVirus=0;
     public VirusFactory(int hp, int atk, int gain){
     this.hp=hp;
     this.atk=atk;
     this.gain=gain;
     }
-    public Virus CreatVirus(String type,int posx,int posy) {
+    public static Virus CreatVirus(String type,int posx,int posy) {
         Virus virus = null;
         if (type.equals("knight")) {
             virus = new KnightVirus(hp, atk, gain,posx,posy);
@@ -35,6 +27,8 @@ public class VirusFactory implements Runnable {
             virus = new MageVirus(hp, atk, gain,posx,posy);
         }
         map[posy][posx]=virus;
+        availVirus--;
+        liveVirus++;
         return virus;
     }
     public void Vsetup(){

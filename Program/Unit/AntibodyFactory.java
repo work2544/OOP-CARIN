@@ -1,20 +1,10 @@
 package Unit;
 
 import ImmuneSystemPack.ImmuneSystem;
-import ProgramAST.Parser.Parser;
-import ProgramAST.Parser.ReadGenetic;
-import ProgramAST.Statement.ErrorPack.EvalError;
-import ProgramAST.Statement.ErrorPack.SyntaxError;
-import ProgramAST.Statement.GlobalFile.NodeTree;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static java.lang.Thread.sleep;
 
 public class AntibodyFactory implements Runnable {
     int hp,atk,gain,movecost,placecost;
-    int livedAnti=0;
+    public static int livedAnti=0;
     protected Unit[][] map= ImmuneSystem.getmap();
 
     public AntibodyFactory(int hp, int atk, int gain,int movecost, int placecost) {
@@ -39,6 +29,7 @@ public class AntibodyFactory implements Runnable {
         } else if (type.equals("mage")) {
             antibody = new MageAntibody(hp, atk, gain,posx,posy);
         }
+        livedAnti++;
         map[posy][posx]=antibody;
         return antibody;
     }

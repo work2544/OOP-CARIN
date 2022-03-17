@@ -31,12 +31,19 @@ public class TestParser {
 //        x.move("left");
 //        x.move("left");x.move("left");
          Printmap();
-   //     exp=new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/VirusGene"),unitvar,x);
-        Parser exp2=new Parser("ant=antibody",unitvar,x);
-      //  NodeTree theGene=exp.parseProgram();
-        System.out.println(exp2.parseProgram().eval());
-       // System.out.println(theGene.eval());
-        System.out.println();
+        exp=new Parser(ReadGenetic.GetGenetic("Program/ProgramAST/GeneticCode/VirusGene"),unitvar,x);
+   //     Parser exp2=new Parser("ant=antibody",unitvar,x);
+        NodeTree theGene=exp.parseProgram();
+     //   System.out.println(exp2.parseProgram().eval());
+        System.out.println(theGene.eval());
+        Printmap();
+        System.out.println(theGene.eval());
+        Printmap();
+        System.out.println(theGene.eval());
+        Printmap();
+        System.out.println(theGene.eval());
+        Printmap();
+      //  System.out.println();
     }
     public static void Printmap(){
         for (int i = 0; i < IS.getmap().length; i++) {
