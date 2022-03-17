@@ -41,7 +41,10 @@ public class Virus implements Unit {
                     {
                         map[i][j].getattack(this);
                         this.hp+=gain();
-                        if(map[i][j].hp()<=0)map[answer[1]][answer[0]]=null;
+                        if(map[i][j].hp()<=0){
+                            map[answer[1]][answer[0]]=null; AntibodyFactory.livedAnti--;
+                            VirusFactory.CreatVirus("knight",answer[0],answer[1]);
+                        }
                     }
             }
         }
@@ -95,7 +98,7 @@ public class Virus implements Unit {
         try {
             while(true)
             {
-                System.out.println("doing genetic");
+
                 nt.eval();
                 sleep(1000);
             }

@@ -2,30 +2,25 @@ package com.api.carinapi.factories;
 
 import static java.lang.Thread.sleep;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Random;
 
 import com.api.carinapi.interfaces.Unit;
-import com.api.carinapi.statements.ErrorPack.EvalError;
-import com.api.carinapi.statements.ErrorPack.SyntaxError;
-import com.api.carinapi.statements.GlobalFile.NodeTree;
-import com.api.carinapi.utils.Parser;
-import com.api.carinapi.utils.ReadGenetic;
+
 
 public class VirusFactory implements Runnable {
-    private  int hp, atk,gain;
+    private static int hp, atk,gain;
     private Random rd=new Random();
-    protected Unit[][] map=ImmuneSystem.getmap();
+    protected static Unit[][] map=ImmuneSystem.getmap();
     private double spwanrate=rd.nextDouble(0.5,1);
-    private int availVirus=20;
-    private int liveVirus=0;
+    private static int availVirus=20;
+    public static int liveVirus=0;
     public VirusFactory(int hp, int atk, int gain){
     this.hp=hp;
     this.atk=atk;
     this.gain=gain;
     }
-    public Virus CreatVirus(String type,int posx,int posy) {
+    public static Virus CreatVirus(String type,int posx,int posy) {
         Virus virus = null;
         if (type.equals("knight")) {
             virus = new KnightVirus(hp, atk, gain,posx,posy);
@@ -35,6 +30,8 @@ public class VirusFactory implements Runnable {
             virus = new MageVirus(hp, atk, gain,posx,posy);
         }
         map[posy][posx]=virus;
+        availVirus--;
+        liveVirus++;
         return virus;
     }
     public void Vsetup(){

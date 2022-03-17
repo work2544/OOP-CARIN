@@ -174,22 +174,24 @@ public class Parser extends StatmentFac {
         String xL = tkz.peek();
         NodeTree nt=parseSensor();
         if(nt!=null) return nt;
-        //identity and number case
-            if (isNumber(xL)) {
-                String x = tkz.consume();
-                if(Integer.parseInt(x)<0) throw new EvalError(x+" is negative");
-                else nt= new MyNumber(Integer.parseInt(x));
-            }
+
+
         //exp case
-        else if(xL.equals("("))
+        if(xL.equals("("))
         {
             tkz.consume("(");
             nt = parseExpression();
             tkz.consume(")");
         }
+        //identity and number case
+        else  if (isNumber(xL)) {
+            String x = tkz.consume();
+            if(Integer.parseInt(x)<0) throw new EvalError(x+" is negative");
+            else nt= new MyNumber(Integer.parseInt(x));
+        }
             else{
                 String x = tkz.consume();
-                nt=new MyNumber(new Variable(x,unitvar).eval());
+                nt=new Variable(x,unitvar);
             }
 
         return nt;
