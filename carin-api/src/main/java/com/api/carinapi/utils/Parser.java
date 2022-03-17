@@ -50,15 +50,12 @@ public class Parser extends StatmentFac {
             }
             else if (tkz.peek("{")||tkz.peek("}")) {
                if(tkz.peek("{")) {
-
                    tkz.consume("{");
                    gp.add(parseProgram());
                    if(!tkz.peek("}"))throw new SyntaxError("need }");
                    tkz.consume("}");
-
                }
                else if(tkz.peek("}")) {break;}
-
             }
             else if(tkz.peek("\n"))tkz.consume();
             else if(!re_word.contains(tkz.peek())){
@@ -74,10 +71,7 @@ public class Parser extends StatmentFac {
                 Variable tempVar= new Variable(x,unitvar);
                 NodeTree expr=parseExpression();
                 return creatAssignStatement(tempVar,expr);
-        }else if(x.equals("random")){
-                Variable tempvar=new RandomVariable();
-                return creatAssignStatement(tempvar, tempvar);
-            }
+        }
             else{
                 throw new SyntaxError("No assign command");
             }
@@ -187,10 +181,19 @@ public class Parser extends StatmentFac {
         else  if (isNumber(xL)) {
             String x = tkz.consume();
             if(Integer.parseInt(x)<0) throw new EvalError(x+" is negative");
+
             else nt= new MyNumber(Integer.parseInt(x));
         }
             else{
                 String x = tkz.consume();
+                if(x.equals("random")){
+                    {
+                        RandomVariable tempvar=new RandomVariable();
+                    new Variable(x,unitvar);
+                    Variable.assign(tempvar.evaluate());
+                     return creatAssignStatement(tempvar);
+                    }
+            }
                 nt=new Variable(x,unitvar);
             }
 

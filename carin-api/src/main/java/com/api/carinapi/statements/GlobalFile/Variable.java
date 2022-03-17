@@ -7,7 +7,7 @@ import com.api.carinapi.statements.ErrorPack.EvalError;
 
 
 public class Variable implements NodeTree {
-    public static Map<String,Integer> allvar=new HashMap<>();
+
     static String identifier;
     static Map<String,Integer> var;
 

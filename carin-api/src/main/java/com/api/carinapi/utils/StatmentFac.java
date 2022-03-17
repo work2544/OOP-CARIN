@@ -7,6 +7,7 @@ import com.api.carinapi.statements.BlockStatement;
 import com.api.carinapi.statements.Command;
 import com.api.carinapi.statements.IfState;
 import com.api.carinapi.statements.WhileState;
+import com.api.carinapi.statements.ErrorPack.EvalError;
 import com.api.carinapi.statements.Expression.BinaryArithExpr;
 import com.api.carinapi.statements.Expression.Sensor;
 import com.api.carinapi.statements.GlobalFile.NodeTree;
@@ -31,8 +32,11 @@ public  class StatmentFac {
     public NodeTree creatWhileStatement(NodeTree expr, NodeTree statement) {
         return new WhileState(expr, statement);
     }
-    public NodeTree creatAssignStatement(Variable var,NodeTree bina){
-        return new Command(var,bina);
+    public NodeTree creatAssignStatement(Variable var) throws EvalError {
+        return new Command(var);
+    }
+    public NodeTree creatAssignStatement(Variable var,NodeTree expr){
+        return new Command(var,expr);
     }
     public NodeTree creatIfStatement(NodeTree ifexp, NodeTree thenstate, NodeTree elsestate) {
         return new IfState(ifexp, thenstate, elsestate);

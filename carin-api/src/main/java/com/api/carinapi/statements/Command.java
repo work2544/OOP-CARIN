@@ -3,6 +3,7 @@ package com.api.carinapi.statements;
 import com.api.carinapi.interfaces.Unit;
 import com.api.carinapi.statements.ErrorPack.EvalError;
 import com.api.carinapi.statements.ErrorPack.SyntaxError;
+import com.api.carinapi.statements.GlobalFile.MyNumber;
 import com.api.carinapi.statements.GlobalFile.NodeTree;
 import com.api.carinapi.statements.GlobalFile.Variable;
 
@@ -12,11 +13,13 @@ public class Command implements NodeTree {
     {
         cmd=new ActionCommand(actcom,directionNode,unit);
     }
-    public Command(Variable name, NodeTree exp)
-    {
-        cmd=new AssignCommand(name,exp);
+    public Command(Variable name) throws EvalError {
+        cmd=new AssignCommand(name);
     }
-
+    public Command(Variable name,NodeTree expr)
+    {
+        cmd=new AssignCommand(name,expr);
+    }
     @Override
     public int eval() throws EvalError, SyntaxError {
         return cmd.eval();
@@ -35,11 +38,11 @@ class ActionCommand implements NodeTree{
 
     @Override
     public int eval() {
-        if(actcom.equalsIgnoreCase("move"))
+        if(actcom.equals("move"))
         {
             unit.move(directionNode);
         }
-        else if(actcom.equalsIgnoreCase("shoot"))
+        else if(actcom.equals("shoot"))
         {
             unit.attack(directionNode);
         }
@@ -55,9 +58,13 @@ class AssignCommand implements NodeTree{
         this.name=name;
         this.exp=exp;
     }
+    public AssignCommand(Variable name) throws EvalError {
+        this.name=name;
+        this.exp=new MyNumber(name.eval());
+    }
     @Override
     public int eval() throws EvalError, SyntaxError {
-        int expVal= exp.eval();
+        int expVal =exp.eval();
         Variable.assign(expVal);
         return expVal;
     }
