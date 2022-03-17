@@ -1,12 +1,12 @@
 package com.api.carinapi.Controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.api.carinapi.beans.Create_virus;
 import com.api.carinapi.beans.RecieveApi;
 import com.api.carinapi.beans.SenderApi;
-import com.api.carinapi.beans.SenderApi_Info;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +23,17 @@ public class UnitController {
     List<SenderApi> returnList = new ArrayList<>();
     
     @PostMapping("/create")
-    public String add(@RequestBody RecieveApi antibody){
+    public Map<String, String> add(@RequestBody RecieveApi antibody){
         RecieveApi newAntibody = new RecieveApi(antibody.getData(), antibody.isPause());
 
         //SenderApi_Info info = new SenderApi_Info("melee", 0, 0);
         //SenderApi returnVirus = new SenderApi()
         //returnList.add(new SenderApi(antibody.getData(), true));
-        return "added";
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", "melee");
+        map.put("posx", "0");
+        map.put("posy", "0");
+        return map;
     }
 
     @GetMapping("/getAll")

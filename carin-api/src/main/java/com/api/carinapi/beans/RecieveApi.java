@@ -38,14 +38,16 @@ class Info{
     public int getPosx() {
         return posx;
     }
-    public void setPosx(int posx) {
-        this.posx = posx;
+    public void setPosx(String posx) {
+        int newPosx = Integer.parseInt(posx);
+        this.posx = newPosx;
     }
     public int getPosy() {
         return posy;
     }
-    public void setPosy(int posy) {
-        this.posy = posy;
+    public void setPosy(String posy) {
+        int newPosy = Integer.parseInt(posy);
+        this.posy = newPosy;
     }
 
     
