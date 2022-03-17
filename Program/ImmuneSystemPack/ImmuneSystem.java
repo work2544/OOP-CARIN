@@ -20,14 +20,19 @@ public class ImmuneSystem {
     /**
      * manage virus and antibody
      */
-    public static class ImmuneHandle extends Thread{
+    public static class ImmuneHandle implements Runnable{
         protected static int initcred, antibodycost;
         protected static int atbihealth,vrhealth;
         protected static  int vratk,vrgain;
         protected static  int atbatk,atbgain;
         protected static  int movecost;
         protected static  int gaincredit;
-
+        public static void increasedit(){
+            initcred+=gaincredit;
+        }
+        public static void decreasedit(){
+            initcred-=antibodycost;
+        }
         public ImmuneHandle(int initcred,int antibodycost,int vratk,int vrgain,int vrhealth,int atbatk,int atbgain,int atbihealth,int movecost,int gaincredit){
             ImmuneHandle.initcred=initcred;
             ImmuneHandle.antibodycost = antibodycost;
@@ -56,7 +61,7 @@ public class ImmuneSystem {
             assert movecost < atbihealth;
             assert gaincredit > 0;
         }
-        private  void imsetup(VirusFactory vf,AntibodyFactory af){
+        public void imsetup(VirusFactory vf,AntibodyFactory af){
             vf.Vsetup();
             af.AntibodySetup();
         }
@@ -64,10 +69,15 @@ public class ImmuneSystem {
             VirusFactory vr=new VirusFactory(vrhealth,vratk,vrgain);
             AntibodyFactory atb=new AntibodyFactory(atbihealth,atbatk,atbgain,movecost,antibodycost);
             Thread vrthread=new Thread(vr);
-             imsetup(vr,atb);
-//            vrthread.setDaemon(true);
-//            vrthread.start();
-            while(true) {
+            Thread atbthread=new Thread(atb);
+            imsetup(vr,atb);
+            vrthread.setDaemon(true);
+            atbthread.setDaemon(true);
+        //    vrthread.start();
+            atbthread.start();
+            while(AntibodyFactory.livedAnti!=0&&VirusFactory.liveVirus!=0) {
+                System.out.println("live an"+AntibodyFactory.livedAnti);
+                System.out.println("live vi"+VirusFactory.liveVirus);
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
                         if (map[i][j]!=null) {
@@ -85,7 +95,7 @@ public class ImmuneSystem {
                                     case "MageVirus":
                                         System.out.print("(#)");
                                         break;
-                                    case "SheildAntibody":
+                                    case "ShieldAntibody":
                                         System.out.print("@");
                                         break;
                                     default:
@@ -97,13 +107,14 @@ public class ImmuneSystem {
                     }
                     System.out.println();
                 }
-                System.out.println("\n|\n|\n|\n|");
                 try {
-                    sleep(2000);
+                    Thread.sleep(1000);
                     Time++;
                 } catch (InterruptedException e) {
                 }
             }
+            vrthread.interrupt();
+            atbthread.interrupt();
             }
     }
     public static void main(String[] args) throws InterruptedException {
@@ -114,7 +125,8 @@ public class ImmuneSystem {
                 map[i][j] = null;
             }
         }
-        IH.start();
+        Thread ihthread=new Thread(IH);
+        ihthread.start();
 
 
     }
